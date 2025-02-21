@@ -1,0 +1,1741 @@
+[Dictionary]
+Version=CSPro 4.1
+Label=LFS-RFMT-0416
+Name=LFS_RFMT_0416_PUF
+RecordTypeStart=1
+RecordTypeLen=1
+Positions=Relative
+ZeroFill=Yes
+DecimalChar=No
+
+[Level]
+Label=Questionnaire
+Name=QUEST
+
+[IdItems]
+
+[Item]
+Label=Region
+Name=PUFREG
+Start=2
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Region
+Name=PUFREG_VS1
+Value=13;National Capital Region
+Note=First District\r\n
+Note=~      NCR I - Manila\r\n
+Note=Second District\r\n
+Note=~      NCR II - Quezon City\r\n
+Note=~      NCR III - Mandaluyong City\r\n
+Note=~                   - Marikina City\r\n
+Note=~                   - Pasig City\r\n
+Note=~                   - San Juan\r\n
+Note=Third District\r\n
+Note=~       NCR IV - Caloocan City\r\n
+Note=~                    - Malabon City\r\n
+Note=~                    - Navotas\r\n
+Note=~                    - Valenzuela City\r\n
+Note=Fourth District\r\n
+Note=~       NCR V - Makati City\r\n
+Note=~                   - Pateros\r\n
+Note=~                   - Taguig City\r\n
+Note=~        NCV VI - Las Piñas City\r\n
+Note=~                     - Muntinlupa City\r\n
+Note=~                     - Parañaque City\r\n
+Note=~                     - Pasay City
+Value=14;Cordillera Administrative Region
+Note=Abra\r\n
+Note=Benguet\r\n
+Note=Ifugao\r\n
+Note=Kalinga \r\n
+Note=Apayao    \r\n
+Note=Mountain Province
+Value=1;Region I - Ilocos Region
+Note=Ilocos Norte\r\n
+Note=Ilocos Sur\r\n
+Note=La Union\r\n
+Note=Pangasinan
+Value=2;Region II - Cagayan Valley
+Note=Batanes\r\n
+Note=Cagayan \r\n
+Note=Isablela\r\n
+Note=Nueva Vizcaya\r\n
+Note=Qirino
+Value=3;Region III - Central Luzon
+Note=Bataan\r\n
+Note=Bulacan\r\n
+Note=Nueva Ecija\r\n
+Note=Pampanga\r\n
+Note=Tarlac\r\n
+Note=Zambales\r\n
+Note=Aurora
+Value=4;Region IVA - CALABARZON
+Note=Batangas\r\n
+Note=Cavite\r\n
+Note=Laguna\r\n
+Note=Quezon\r\n
+Note=Rizal
+Value=17;Region IVB - MIMAROPA
+Note=Marinduque\r\n
+Note=Occidental Mindoro\r\n
+Note=Oriental Mindoro\r\n
+Note=Palawan\r\n
+Note=Romblon
+Value=5;Region V- Bicol
+Note=Albay\r\n
+Note=Camarines Norte\r\n
+Note=Camarines Sur\r\n
+Note=Catanduanes\r\n
+Note=Masbate\r\n
+Note=Sorsogon
+Value=6;Region VI - Western Visayas
+Note=Aklan\r\n
+Note=Antique\r\n
+Note=Capiz\r\n
+Note=Iloilo\r\n
+Note=Negros Occidental\r\n
+Note=Guimaras
+Value=7;Region VII - Central Visayas
+Note=Bohol\r\n
+Note=Cebu\r\n
+Note=Negros Oriental\r\n
+Note=Siquijor
+Value=8;Region VIII - Eastern Visayas
+Note=Eastern Samar\r\n
+Note=Leyte\r\n
+Note=Northern Samar\r\n
+Note=Samar (Western)\r\n
+Note=Southern Leyte\r\n
+Note=Biliran
+Value=9;Region IX - Zamboanga Peninsula
+Note=Isabela City\r\n
+Note=Zamboanga del Norte\r\n
+Note=Zamboanga del Sur\r\n
+Note=Zamboanga Sibugay
+Value=10;Region X - Northern Mindanao
+Note=Bukidnon\r\n
+Note=Camiguin\r\n
+Note=Lanao del Norte\r\n
+Note=Misamis Occidental\r\n
+Note=Misamis Oriental
+Value=11;Region XI - Davao
+Note=Davao (Davao del Norte)\r\n
+Note=Davao del Sur\r\n
+Note=Davao Oriental\r\n
+Note=Campostela Valley
+Value=12;Region XII - SOCCSKSARGEN
+Note=Sultan Kudarat\r\n
+Note=Cotabato City\r\n
+Note=North Cotabato\r\n
+Note=South Cotabato\r\n
+Note=Sarangani
+Value=16;Region XIII - Caraga
+Note=Agusan del Norte\r\n
+Note=Agusan del Sur\r\n
+Note=Surigao del Norte  \r\n
+Note=Surigao del Sur
+Value=15;Autonomous Region in Muslim Mindanao
+Note=Basilan\r\n
+Note=Lanao del Sur\r\n
+Note=Maguindanao\r\n
+Note=Sulu\r\n
+Note=Tawi-tawi
+
+[Item]
+Label=Province
+Name=PUFPRV
+Start=4
+Len=2
+ZeroFill=Yes
+
+[Item]
+Label=Province Recode
+Name=PUFPRRCD
+Start=6
+Len=4
+ZeroFill=Yes
+
+[Item]
+Label=Household Unique Sequential Number
+Name=PUFHHNUM
+Note=\r\n
+Note=HHNUM - is a unique household number at national level
+Start=10
+Len=5
+ZeroFill=Yes
+
+[Record]
+Label=Household Members
+Name=HHMEM
+RecordTypeValue='2'
+Required=No
+MaxRecords=35
+RecordLen=100
+
+[Item]
+Label=2010Urban-RuralFIES
+Name=PUFURB2K10
+Start=15
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=2010Urban-RuralFIES
+Name=PUFURB2K10_VS1
+Value=1;Urban
+Value=2;Rural
+
+[Item]
+Label=Final Weight Based on Projection (provincial projections)
+Name=PUFPWGTFIN
+Start=16
+Len=10
+Decimal=4
+ZeroFill=Yes
+
+[Item]
+Label=Survey Month
+Name=PUFSVYMO
+Note=Survey Month                        Reference \r\n
+Note=\r\n
+Note=~   January          -                   Fourth Quarter of the Previous Year (October - December)\r\n
+Note=~   April                -                   First Quarter of the Current Year       (January - March)\r\n
+Note=~   July                 -                   Second Quarter of the Current Year (April - June)\r\n
+Note=~   October          -                   Third Quarter of the Current Year      (July - September)
+Start=26
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Survey Month
+Name=PUFSVYMO_VS1
+Value=1;January
+Value=4;April
+Value=7;July
+Value=10;October
+
+[Item]
+Label=Survey Year
+Name=PUFSVYYR
+Start=28
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=Survey Year
+Name=PUFSVYYR_VS1
+Value=2016;2016
+
+[Item]
+Label=Psu Number
+Name=PUFPSU
+Start=32
+Len=5
+ZeroFill=Yes
+
+[Item]
+Label=Replicate
+Name=PUFRPL
+Start=37
+Len=3
+ZeroFill=Yes
+
+[Item]
+Label=Household Size
+Name=PUFHHSIZE
+Start=40
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Size
+Name=PUFHHSIZE_VS1
+Value=1;1
+Value=2;2
+Value=3;3
+Value=4;4
+Value=5;5
+Value=6;6
+Value=7;7
+Value=8;8
+Value=9;9
+Value=10;10
+Value=11;11
+Value=12;12
+Value=13;13
+Value=14;14
+Value=15;15
+Value=16;16
+Value=17;17
+Value=18;18
+Value=19;19
+Value=20;20
+Value=21;21
+Value=22;22
+Value=23;23
+Value=24;24
+Value=25;25
+Value=26;26
+Value=27;27
+Value=28;28
+Value=29;29
+Value=30;30
+
+[Item]
+Label=C101-Line Number
+Name=PUFC01_LNO
+Start=42
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C101-Line Number
+Name=PUFC01_LNO_VS1
+Value=1:35
+
+[Item]
+Label=C03-Relationship to Household Head
+Name=PUFC03_REL
+Start=44
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C03-Relationship to Household Head
+Name=PUFC03_REL_VS1
+Value=1;Head
+Value=2;Wife/Spouse
+Value=3;Son/daughter
+Value=4;Brothers/sisters
+Value=5;Son/daughter_law
+Value=6;Grandchildren
+Value=7;Father/Mother
+Value=8;Other Relative
+Value=9;Boarder
+Value=10;Domestic Helper
+Value=11;Non-Relative
+
+[Item]
+Label=C04-Sex
+Name=PUFC04_SEX
+Start=46
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C04-Sex
+Name=PUFC04_SEX_VS1
+Value=1;Male
+Value=2;Female
+
+[Item]
+Label=C05-Age as of Last Birthday
+Name=PUFC05_AGE
+Start=47
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C05-Age as of Last Birthday
+Name=PUFC05_AGE_VS1
+Value=0:4;00 - 04
+Value=5:9;05 - 09
+Value=10:14;10 -14
+Value=15:24;15 - 24
+Value=25:34;25 - 34
+Value=35:44;35 - 44
+Value=45:54;45 - 54
+Value=55:64;55 - 64
+Value=65:99;65 and Over
+
+[ValueSet]
+Label=C07-Age (15 & Over)
+Name=PUFC05_AGE_VS2
+Value=15:24;15 - 24
+Value=25:34;25 - 34
+Value=35:44;35 - 44
+Value=45:54;45 - 54
+Value=55:64;55 - 64
+Value=65:98;65  and Over
+Value=99;Not Reported
+
+[ValueSet]
+Label=C07-Age as of Last Birthday
+Name=PUFC05_AGE_VS3
+Value=0:14;00 - 14
+Value=15:24;15 - 24
+Value=25:34;25 - 34
+Value=35:44;35 - 44
+Value=45:54;45 - 54
+Value=55:64;55 - 64
+Value=65:99;65 and Over
+
+[Item]
+Label=C06-Marital Status
+Name=PUFC06_MSTAT
+Start=49
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C06-Marital Status
+Name=PUFC06_MSTAT_VS1
+Value=1;Single
+Value=2;Married
+Value=3;Widowed
+Value=4;Divorce/Separate
+Value=5;Annuled
+Value=6;Unknown
+
+[Item]
+Label=C07-Highest Grade Completed
+Name=PUFC07_GRADE
+Start=50
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=C07-Highest Grade Completed
+Name=PUFC07_GRADE_VS1
+Note=This PSCED is last used on APRIL 2016
+Value=0;No Grade Completed
+Value=10;Preschool
+Value=210;Grade 1
+Value=220;Grade 2
+Value=230;Grade 3
+Value=240;Grade 4
+Value=250;Grade 5
+Value=260;Grade 6
+Value=280;Elementary Graduate
+Value=310;First Year High School/Grade 7
+Value=320;Second Year High School
+Value=330;Third Year High School
+Value=340;Fourth Year High School
+Value=350;High School Graduate
+Value=410;First Year Post Secondary
+Value=420;Second Year Post Secondary
+Value=810;First Year College
+Value=820;Second Year College
+Value=830;Third Year College
+Value=840;Fourth Year College
+Value=900;Post Baccalaureate
+Value=501;Basic Programs
+Value=508;Literacy and Numeracy Programs
+Value=509;Personal Development Programs
+Value=514;Teacher Training and Education Sciences Programs
+Value=521;Arts Programs
+Value=522;Humanities Programs
+Value=531;Social and Behavioral Science Programs
+Value=532;Journalism and Information Programs
+Value=534;Business and Administration Programs
+Value=542;Life Sciences Programs
+Value=544;Physical Sciences Programs
+Value=548;Computing/Information Technology Programs
+Value=552;Engineering and Engineering trades Programs
+Value=554;Manufacturing and Processing Programs
+Value=558;Architecture and Building Programs
+Value=562;Agriculture, Forestry, and Fishery Programs
+Value=564;Veterinary Programs
+Value=572;Health Programs
+Value=576;Social Services Programs
+Value=581;Personal Services Programs
+Value=584;Transport Services Programs
+Value=585;Environmental Protection Programs
+Value=586;Security Services Programs
+Value=589;Other Programs in Education at the Third Level, First Stage, of the Type that Leads to an Award not Equivalent to a First University or Baccalaureate Degree
+Value=601;Basic Programs
+Value=614;Teacher Training and Education Sciences Programs
+Value=621;Arts Programs
+Value=622;Humanities Programs
+Value=631;Social and Behavioral Science Programs
+Value=632;Journalism and Information Programs
+Value=634;Business and Administration Programs
+Value=638;Law Programs
+Value=642;Life Sciences Programs
+Value=644;Physical Sciences Programs
+Value=646;Mathematics and Statistics Programs
+Value=648;Computing/Information Technology Programs
+Value=652;Engineering and Engineering Trades Programs
+Value=654;Manufacturing and Processing Programs
+Value=658;Architecture and Building Programs
+Value=662;Agriculture, Forestry, and Fishery Programs
+Value=664;Veterinary Programs
+Value=672;Health Programs
+Value=676;Social Services Programs
+Value=681;Personal Services Programs
+Value=684;Transport Services Programs
+Value=685;Environmental Protection Programs
+Value=686;Security Services Programs
+Value=689;Other Programs of Education at the Third Level, First Stage, of the Type that Leads to a Baccalaureate or First University/Professional Degree (HIgher Education Level, First Stage, or Collegiate Education Level)
+
+[Item]
+Label=C08-Currently Attending School
+Name=PUFC08_CURSCH
+Start=53
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C08-Currently Attending School
+Name=PUFC08_CURSCH_VS1
+Value=1;yes
+Value=2;no
+Value=' ';not 5:24 yrs old
+Name=NOTAPPL,Special
+
+[Item]
+Label=C09-Graduate of technical/vocational course
+Name=PUFC09_GRADTECH
+Note=new item, started only January 2012
+Start=54
+Len=1
+
+[ValueSet]
+Label=C09-Graduate of technical/vocational course
+Name=PUFC09_GRADTECH_VS1
+Value=1;yes
+Value=2;no
+Value=' ';Less than 15 Years Old
+Name=NOTAPPL,Special
+
+[Item]
+Label=C10-Overseas Filipino Indicator
+Name=PUFC10_CONWR
+Start=55
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C10-Overseas Filipino Indicator
+Name=PUFC10_CONWR_VS1
+Value=1;Overseas Contract Workers
+Value=2;Workers other than OCW
+Value=3;Employees in Philippine Embassy, Consulates & other Missions
+Value=4;Students abroad/Tourists
+Value=5;Others
+Value=' ';Less than 15 Years Old
+Name=NOTAPPL,Special
+
+[Item]
+Label=C11-Work Indicator
+Name=PUFC11_WORK
+Start=56
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C11-Work Indicator
+Name=PUFC11_WORK_VS1
+Value=1;yes
+Value=2;no
+Value=' ';Less than 5 Years Old
+Name=NOTAPPL,Special
+
+[Item]
+Label=C12-Job Indicator
+Name=PUFC12_JOB
+Start=57
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C12-Job Indicator
+Name=PUFC12_JOB_VS1
+Value=1;yes
+Value=2;no
+Value=' ';Less than 5 Years Old
+Name=NOTAPPL,Special
+
+[Item]
+Label=C14-Primary Occupation
+Name=PUFC14_PROCC
+Start=58
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C14-Primary Occupation
+Name=PUFC14_PROCC_VS1
+Value=11:14;Managers
+Value=21:26;Professionals
+Value=31:35;Technicians and Associate Professionals
+Value=41:44;Clerical Support Workers
+Value=51:54;Service and Sales Workers
+Value=61:63;Skilled Agricultural, Forestry and Fishery Workers
+Value=71:75;Craft and Related Trades Workers
+Value=81:83;Plant and Machine Operators and Assemblers
+Value=91:96;Elementary Occupations
+Value=1:3;Armed Forces Occupations
+
+[ValueSet]
+Label=C14-Primary Occupation
+Name=PUFC14_PROCC_VS2
+Value=11;Chief executives, senior officials and legislators
+Value=12;Administrative and commercial managers
+Value=13;Production and specialized services managers
+Value=14;HOSPITALITY, RETAIL AND OTHER SERVICES MANAGERS
+Value=21;SCIENCE AND ENGINEERING PROFESSIONALS
+Value=22;HEALTH PROFESSIONALS
+Value=23;TEACHING PROFESSIONALS
+Value=24;BUSINESS AND ADMINISTRATION PROFESSIONALS
+Value=25;INFORMATION AND COMMUNICATION TECHNOLOGY PROFESSIONALS
+Value=26;LEGAL, SOCIAL AND CULTURAL PROFESSIONALS
+Value=31;SCIENCE AND ENGINEERING ASSOCIATE PROFESSIONALS
+Value=32;HEALTH ASSOCIATE PROFESSIONALS
+Value=33;BUSINESS AND ADMINISTRATION ASSOCIATE PROFESSIONALS
+Value=34;LEGAL, SOCIAL, CULTURAL AND RELATED PROFESSIONALS
+Value=35;INFORMATION AND COMMUNICATIONS TECHNICIAN
+Value=41;GENERAL AND KEYBOARD CLERKS
+Value=42;CUSTOMER SERVICE CLERKS
+Value=43;Numerical and material recording clerks
+Value=44;Other clerical support workers
+Value=51;Personal service workers
+Value=52;Sales workers
+Value=53;Personal care workers
+Value=54;Protective services workers
+Value=61;Market-oriented skilled agricultural workers
+Value=62;Market-oriented skilled forestry, fishery and hunting workers
+Value=63;Subsistence farmers, fishers, hunters and gatherers
+Value=71;Building and related trades workers, excluding electricians
+Value=72;Metal, machinery and related trades workers
+Value=73;Handicraft and printing workers
+Value=74;Electrical and electronics trades workers
+Value=75;Food processing, wood working, garment and other craft and related trades workers
+Value=81;Stationary plant and machine operators
+Value=82;Assemblers
+Value=83;Drivers and mobile plant operators
+Value=91;Cleaners and helpers
+Value=92;Agricultural, forestry and fishery laborers
+Value=93;Laborers in mining, construction, manufacturing and transport
+Value=94;Food preparation assistants
+Value=95;Street and related sales and service workers
+Value=96;Refuse workers and other elementary workers
+Value=1;Commissioned armed forces officers
+Value=2;Non-commissioned armed forces officers
+Value=3;Armed forces occupations, other ranks
+
+[Item]
+Label=C16-Kind of Business (Primary Occupation)
+Name=PUFC16_PKB
+Start=60
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C16-Major Industry
+Name=PUFC16_PKB_VS1
+Value=1:3;AGRICULTURE
+Value=1:2;   Agriculture and Forestry
+Value=3;   Fishing
+Value=5:43;INDUSTRY
+Value=5:9;   Mining and Quarying
+Value=10:33;   Manufacturing
+Value=35;   Electricity, Gas, Steam and Airconditioning Supply
+Value=36:39;   Water Supply; Sewerage, Waste Management and Remediation Activities
+Value=41:43;   Construction
+Value=45:99;SERVICES
+Value=45:47;   Whosale and Retail Trade; Repair of Motor Vehicles and Motorcycles
+Value=49:53;   Transportation and Storage
+Value=55:56;   Accommodation and Food Service Activities
+Value=58:63;   Information and Communication
+Value=64:66;   Financial and Insurance Activities
+Value=68;   Real Estate Activities
+Value=69:75;   Professional, Scientific  and Technical Activities
+Value=77:82;   Administrative and Support Service Activities
+Value=84;   Public Administration and Defense; Compulsory Social Security
+Value=85;   Education
+Value=86:88;   Human Health and Social Work Activities
+Value=90:93;   Arts, Entertainment and Recreation
+Value=94:96;   Other Service Activities
+Value=97:98;   Activities of Households as Employers
+Value=99;   Activities of Extraterritorial Organizations and Bodies
+
+[ValueSet]
+Label=C16-Kind of Business (Primary Occupation)
+Name=PUFC16_PKB_VS2
+Note=PSIC 2010 CPH
+Value=1;Crop and Animal Production, Hunting and Related Services Activities
+Value=2;Forestry and Logging
+Value=3;Fishing and Aquaculture
+Value=5;Mining of Coal and Lignite
+Value=6;Extraction of Crude Petroleum and Natural Gas
+Value=7;Mining of Metal Ores
+Value=8;Other Mining and Quarrying
+Value=9;Mining Support Services
+Value=10;Manufacture of Food Products
+Value=11;Manufacture of Beverages
+Value=12;Manufacture of Tobacco Products
+Value=13;Manufacture of Textiles
+Value=14;Manufacture of Wearing Apparel
+Value=15;Manufacture of Leather and Related Products
+Value=16;Manufacture of Wood and of Products of Wood and Cork, Except Furniture; Manufacture of Articles of Bamboo, Cane, Rattan and the Like; Manufacture of Straw and Plaiting Materials
+Value=17;Manufacture of Paper and Paper Products
+Value=18;Printing and Reproduction of Recorded Media
+Value=19;Manufacture of Coke and Refined Petroleum Products
+Value=20;Manufacture of Chemicals and Chemical Products
+Value=21;Manufacture of Basic Pharmaceutical Products and Pharmaceutical Preparation
+Value=22;Manufacture of Rubber and Plastic Products
+Value=23;Manufacture of Other NonMetallic Mineral Products
+Value=24;Manufacture of Basic Metals
+Value=25;Manufacture of Fabricated Metal Products, Except Machinery and Equipment
+Value=26;Manufacture of Computer, Electronic and Optical Products
+Value=27;Manufacture of Electrical Equipment
+Value=28;Manufacture of Machinery and Equipment, not elsewhere classified
+Value=29;Manufacture of Motor Vehicles, Trailers and Semi-Trailers
+Value=30;Manufacture of Other Transport Equipment
+Value=31;Manufacture of Furniture
+Value=32;Other Manufacturing
+Value=33;Repair and Installation of Machinery and Equipment
+Value=35;Electricity, Gas, Steam and Air Conditioning Supply
+Value=36;Water Collection, Treatment and Supply
+Value=37;Sewerage
+Value=38;Waste Collection, Treatment and Disposal Activities; Materials Recovery
+Value=39;Remediation Activities and Other Waste Management Services
+Value=41;Construction of Buildings
+Value=42;Civil Engineering
+Value=43;Specialized Construction Activities
+Value=45;Wholesale and Retail Trade and Repair of Motor Vehicles and Motorcycles
+Value=46;Wholesale Trade, Except of Motor Vehicles and Motorcycles
+Value=47;Retail Trade, Except of Motor Vehicles and Motorcycles
+Value=49;Land Transport and Transport via Pipelines
+Value=50;Water Transport
+Value=51;Air Transport
+Value=52;Warehousing and Support Activities for Transportation
+Value=53;Postal and Courier Activities
+Value=55;Accommodation
+Value=56;Food and Beverage Service Activities
+Value=58;Publishing Activities
+Value=59;Motion Picture, Video and Television Programme Production, Sound Recording and Music Publishing Activities
+Value=60;Programming and Broadcasting Activities
+Value=61;Telecommunications
+Value=62;Computer Programming, Consultancy, and Related Activities
+Value=63;Information Service Activities
+Value=64;Financial Service Activities, Except Insurance and Pension Funding
+Value=65;Insurance, Reinsurance, and Pension Funding, Except Compulsory Social Security
+Value=66;Activities Auxiliary to Financial Service and Insurance Activities
+Value=68;Real Estate Activities
+Value=69;Legal and Accounting
+Value=70;Activities of Head Offices; Management Consultancy Activities
+Value=71;Architecture and Engineering Activities; Technical Testing and Analysis
+Value=72;Scientific and Research Development
+Value=73;Advertising and Market Research
+Value=74;Other Professional, Scientific, and Technical Activities
+Value=75;Veterinaty Activities
+Value=77;Rental and Leasing Activities
+Value=78;Employment Activities
+Value=79;Travel Agency, Tour Operator, Reservation Service and Related Activities
+Value=80;Security and Investigation Activities
+Value=81;Services to Buildings and Landscape Activities
+Value=82;Office Administrative, Office Support and Other Business Activities
+Value=84;Public Administration and Defense; Compulsory Social Security
+Value=85;Education
+Value=86;Human Health Activities
+Value=87;Residential Care Activities
+Value=88;Social Work Activities Without Accommodation
+Value=90;Creative Arts and Entertainment Activities
+Value=91;Libraries, Archives, Museums and Other Cultural Activities
+Value=92;Gambling and Betting Activities
+Value=93;Sports Activities and Amusement and Recreation Activities
+Value=94;Activities of Membership Organizations
+Value=95;Repair of Computers and Personal and Household Goods
+Value=96;Other Personal Service Activities
+Value=97;Activities of Households as Employers of Domestic Personnel
+Value=98;Undifferentiated Goods- and Services-Producing Activities of Private Households for Own Use
+Value=99;Activities of Extraterritorial Organizations and Bodies
+
+[Item]
+Label=C17-Nature of Employment (Primary Occupation)
+Name=PUFC17_NATEM
+Start=62
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C17-Nature of Employment (Primary Occupation)
+Name=PUFC17_NATEM_VS1
+Value=1;Permanent Job
+Value=2;Short-term
+Value=3;Different Employer
+
+[Item]
+Label=C18-Normal Working Hours per Day
+Name=PUFC18_PNWHRS
+Start=63
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C18-Normal Working Hours per Day
+Name=PUFC18_PNWHRS_VS1
+Value=1:16 0
+
+[Item]
+Label=C19-Total Number of Hours Worked during the past week
+Name=PUFC19_PHOURS
+Start=65
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=C19-Total Number of Hours Worked during the past week
+Name=PUFC19_PHOURS_VS1
+Value=1:39;Worked less than 40 hours
+Value=1:19;less than 20 hours
+Value=20:29;20 - 29
+Value=30:39;30 - 39
+Value=40:112;40 and over
+Value=40:48;40 - 48
+Value=49:112;49 and over
+Value=0;with a job, not at work
+Value=999;Not Reported
+
+[ValueSet]
+Label=C19-Total hours worked
+Name=PUFC19_PHOURS_VS2
+Value=1:39;Worked less than 40 hours
+Value=40:112;Worked 40 hours and over
+Value=0;With a job, not at work
+Value=999;Not reported
+
+[ValueSet]
+Label=C19-Total hours worked1
+Name=PUFC19_PHOURS_VS3
+Value=0;With a job, not at work
+Value=1:19;Under 20
+Value=20:29;20 - 29
+Value=30:39;30 - 39
+Value=40:112;40 and over
+Value=999;Not reported
+
+[Item]
+Label=C20-Want More Hours of Work
+Name=PUFC20_PWMORE
+Start=68
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C20-Want More Hours of Work
+Name=PUFC20_PWMORE_VS1
+Value=1;Want More Hours of Work
+Value=2;Did not Want More Hours of Work
+
+[Item]
+Label=C21-Look for Additional Work
+Name=PUFC21_PLADDW
+Start=69
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C21-Look for Additional Work
+Name=PUFC21_PLADDW_VS1
+Value=1;Looked for Additional Work
+Value=2;Did not Look for Additional Work
+
+[Item]
+Label=C22-First Time to Work
+Name=PUFC22_PFWRK
+Start=70
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C22-First Time to Work
+Name=PUFC22_PFWRK_VS1
+Value=1;First Time to Do Any Work
+Value=2;Not First Time to Do Any Work
+
+[Item]
+Label=C23-Class of Worker (Primary Occupation)
+Name=PUFC23_PCLASS
+Start=71
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C23-Class of Worker (Primary Occupation)
+Name=PUFC23_PCLASS_VS1
+Value=0:2 5;Wage and Salary Workers
+Value=0;Private Household
+Value=1;Private Establishment
+Value=2;Gov't/Gov't Corporation
+Value=5;With Pay (Family Owned Business)
+Value=3;Self Employed
+Value=4;Employer
+Value=6;Without Pay (Family owned Business)
+Value=9;Not Reported
+
+[Item]
+Label=C24-Basis of Payment (Primary Occupation)
+Name=PUFC24_PBASIS
+Start=72
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C24-Basis of Payment (Primary Occupation)
+Name=PUFC24_PBASIS_VS1
+Value=0;In Kind only
+Value=1;Per piece
+Value=2;Per Hour
+Value=3;Per Day
+Value=4;Monthly
+Value=5;Pakyaw
+Value=6;Other Salaries/Wages
+Value=7;Commission Basis
+
+[Item]
+Label=C25-Basic Pay per Day (Primary Occupation)
+Name=PUFC25_PBASIC
+Start=73
+Len=5
+ZeroFill=Yes
+
+[ValueSet]
+Label=C25-Basic Pay per Day (Primary Occupation)
+Name=PUFC25_PBASIC_VS1
+Value=0:100;Less than 100
+Value=100:499;100  -   499
+Value=500:999; 500 -   999
+Value=1000:1499;1000 - 1499
+Value=1500:1999;1500 - 1999
+Value=2000:2499;2000 - 2499
+Value=2500:2999;2500 - 2999
+Value=3000:3999;3000 - 3499
+Value=3500:3999;3500 - 3999
+Value=4000:4499;4000 - 4499
+Value=4500:4999;4500 - 4999
+Value=5000:5499;5000 - 5499
+Value=5500:5999;5500 - 5999
+Value=6000:6499;6000 - 6499
+Value=6500:6999;6500 - 6999
+Value=7000:7499;7000 - 7499
+Value=7500:7999;7500 - 7999
+Value=8000:8499;8000 - 8499
+Value=8500:8999;8500 - 8999
+Value=9000:9499;9000 - 9499
+Value=9500:99998;9500 - 99998
+
+[Item]
+Label=C26-Other Job Indicator
+Name=PUFC26_OJOB
+Start=78
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C26-Other Job Indicator
+Name=PUFC26_OJOB_VS1
+Value=1;With Other Occupation
+Value=2;No Other Occupation
+
+[Item]
+Label=C27-Number of Jobs during the past week
+Name=PUFC27_NJOBS
+Start=79
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C27-Number of Jobs during the past week
+Name=PUFC27_NJOBS_VS1
+Value=0:9;valid
+Value=' ';blank
+Name=NOTAPPL,Special
+
+[Item]
+Label=C28-Total Hours Worked for all Jobs
+Name=PUFC28_THOURS
+Start=80
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=C28-Total Hours Worked for all Jobs
+Name=PUFC28_THOURS_VS1
+Value=1:48 49:168 0
+Value='   ';blank
+Name=NOTAPPL,Special
+
+[Item]
+Label=C29-Reasons for Working More than 48 Hours during the past week
+Name=PUFC29_WWM48H
+Start=83
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C29-Reasons for Working More than 48 Hours during the past week
+Name=PUFC29_WWM48H_VS1
+Value=1;Wanted more earnings
+Value=2;Requirements of the job
+Value=3;Exceptional week
+Value=4;Ambition, passion for job
+Value=5;Other reasons
+
+[Item]
+Label=C30-Looked for Work or Tried to Establish Business during the past week
+Name=PUFC30_LOOKW
+Start=84
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C30-Looked for Work or Tried to Establish Business during the past week
+Name=PUFC30_LOOKW_VS1
+Value=1;Looked for Work Anytime During the Past Week
+Value=2;Did not Look for Work Anytime During the Past Week
+
+[Item]
+Label=C31-First Time to Look for Work
+Name=PUFC31_FLWRK
+Start=85
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C31-First Time to Look for Work
+Name=PUFC31_FLWRK_VS1
+Value=1;First Time to Look for Work
+Value=2;Not First Time to Look For Work
+
+[Item]
+Label=C32-Job Search Method
+Name=PUFC32_JOBSM
+Start=86
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C32-Job Search Method
+Name=PUFC32_JOBSM_VS1
+Value=1;registered in public employment agency
+Value=2;registered in private employment agency
+Value=3;approached employer directly
+Value=4;approached relatives or friends
+Value=5;placed or answered advertisements
+Value=6;others
+Value=9;not reported
+
+[Item]
+Label=C33-Number of Weeks Spent in Looking for Work
+Name=PUFC33_WEEKS
+Start=87
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=C33-Number of Weeks Spent in Looking for Work
+Name=PUFC33_WEEKS_VS1
+Value=1:3;less than 4
+Value=4:9;4 - 9
+Value=10:19;10 - 19
+Value=20:155;20 and over
+Value='   ';blank
+Name=NOTAPPL,Special
+
+[Item]
+Label=C34-Reason for not Looking for Work
+Name=PUFC34_WYNOT
+Start=90
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C34-Reason for not Looking for Work
+Name=PUFC34_WYNOT_VS1
+Value=1;Tired/Believe no Work Available
+Value=2;Awaiting Results of Previous Job Application
+Value=3;Temporary Illness/Disability
+Value=4;Bad Weather
+Value=5;Wait for rehire/Job Recall
+Value=6;Too young/old or Retired/Permanent Disability
+Value=7;Household, Family Duties
+Value=8;Schooling
+Value=9;Others
+
+[Item]
+Label=C35-When Last Looked for Work
+Name=PUFC35_LTLOOKW
+Start=91
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C35-When Last Looked for Work
+Name=PUFC35_LTLOOKW_VS1
+Value=1;Within last month
+Value=2;One to six months ago
+Value=3;More than six months ago
+Value=' ';blank
+Name=NOTAPPL,Special
+
+[Item]
+Label=C36-Available for Work
+Name=PUFC36_AVAIL
+Start=92
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C36-Available for Work
+Name=PUFC36_AVAIL_VS1
+Value=1;Available for Work During the Past Week
+Value=2;Not Available for Work During the Past Week
+
+[Item]
+Label=C37-Willingness to take up work during the past week or withing two weeks
+Name=PUFC37_WILLING
+Start=93
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C37-Willingness to take up work during the past week or withing two weeks
+Name=PUFC37_WILLING_VS1
+Value=1;Willing to take up work during the past week
+Value=2;Not willing to take up work during the past week
+Value=' ';blank
+Name=NOTAPPL,Special
+
+[Item]
+Label=C38-Previous Job Indicator
+Name=PUFC38_PREVJOB
+Start=94
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C38-Previous Job Indicator
+Name=PUFC38_PREVJOB_VS1
+Value=1;Worked at Anytime Before
+Value=2;Did not Work at Anytime Before
+
+[Item]
+Label=C40-Previous Occupation
+Name=PUFC40_POCC
+Start=95
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C40-Previous Occupation
+Name=PUFC40_POCC_VS1
+Value=11;Legislators
+Value=12;Senior government officials
+Value=13;Traditional chiefs and heads of villages
+Value=14;Senior officials of special-interest organizations
+Value=20;Managing directors and chief executives
+Value=11;Finance managers
+Value=12;Human resource managers
+Value=13;Policy and planning managers
+Value=19;Business services and administration managers not elsewhere classified
+Value=21;Sales and marketing managers
+Value=22;Advertising and public relations managers
+Value=23;Research and development managers
+Value=11;Agricultural and forestry production managers
+Value=12;Aquaculture and fisheries production managers
+Value=21;Manufacturing managers
+Value=22;Mining managers
+Value=23;Construction managers
+Value=24;Supply, distribution and related managers
+Value=30;Information and communications technology service managers
+Value=41;Child care service managers
+Value=42;Health service managers
+Value=43;Aged care service managers
+Value=44;Social welfare managers
+Value=45;Education managers
+Value=46;Financial and insurance services branch managers
+Value=49;Professional services managers not elsewhere classified
+Value=11;Hotel managers
+Value=12;Restaurant managers
+Value=20;Retail and wholesale trade managers
+Value=31;Sports, recreation and cultural centre managers
+Value=39;Services managers not elsewhere classified
+Value=11;Physicists and astronomers
+Value=12;Meteorologists
+Value=13;Chemists
+Value=14;Geologists and geophysicists
+Value=19;Other physical and earth science professionals
+Value=21;Mathematicians and actuaries
+Value=22;Statisticians
+Value=31;Biologists, botanists, zoologists and related scientists
+Value=32;Farming, forestry and fisheries advisers
+Value=33;Environmental protection professionals
+Value=41;Industrial and production engineers
+Value=42;Civil engineers
+Value=43;Environmental engineers
+Value=44;Mechanical engineers
+Value=45;Chemical engineers
+Value=46;Mining engineers, metallurgists and related professionals
+Value=49;Engineering professionals not elsewhere classified
+Value=51;Electrical engineers
+Value=52;Electronics engineers
+Value=53;Telecommunications engineers
+Value=61;Building architects
+Value=62;Landscape architects
+Value=63;Product and garment designers
+Value=64;Town and traffic planners
+Value=65;Cartographer and surveyors
+Value=66;Graphic and multimedia designers
+Value=11;Generalist medical practitioners
+Value=12;Specialist medical practitioners
+Value=21;Nursing professional
+Value=22;Midwifery professionals
+Value=30;Traditional and complementary medicine professionals
+Value=40;Paramedical practitioners
+Value=50;Veterinarians
+Value=61;Dentists
+Value=62;Pharmacists
+Value=63;Environmental and occupational health and hygiene professionals
+Value=64;Physiotherapist
+Value=65;Dieticians and nutritionist
+Value=66;Audiologists and speech therapist
+Value=67;Optometrists and opthalmic opticians
+Value=69;Health professionals not elsewhere classified
+Value=10;University and higher education teachers
+Value=20;Vocational education teachers
+Value=30;Secondary education teachers
+Value=41;Primary school teachers
+Value=42;Early childhood educators
+Value=51;Education methods specialists
+Value=52;Special need teachers
+Value=53;Other language teachers
+Value=54;Other music teachers
+Value=55;Other arts teachers
+Value=56;Information technology trainers
+Value=59;Teaching professionals not elsewhere classified
+Value=11;Accountants
+Value=12;Financial and investment advisers
+Value=13;Financial analyst
+Value=21;Management and organization analyst
+Value=22;Policy administration professionals
+Value=23;Personnel and careers professionals
+Value=24;Training and staff development professionals
+Value=31;Advertising and marketing professionals
+Value=32;Public relations professionals
+Value=33;Technical and medical sale professionals
+Value=34;Information and communications technology sale professionals
+Value=11;Systems analysts
+Value=12;Software developers
+Value=13;Web and multimedia developers
+Value=14;Applications programmers
+Value=19;Software and applications developers and analyst not elsewhere classified
+Value=21;Database designers and administrators
+Value=22;Systems administrators
+Value=23;Computer network professionals
+Value=29;Database and network professionals not elsewhere classified
+Value=11;Lawyers
+Value=12;Judges
+Value=19;Legal professionals not elsewhere classified
+Value=21;Archivists and curators
+Value=22;Librarians and related information professionals
+Value=31;Economists
+Value=32;Sociologists, anthropologists and related professionals
+Value=33;Philosophers, historians and political scientists
+Value=34;Psychologists
+Value=35;Social work and counselling professionals
+Value=36;Religious professionals
+Value=41;Authors and related writers
+Value=42;Journalists
+Value=43;Translators, interpreters and other linguists
+Value=51;Visual artists
+Value=52;Musicians, singers and composers
+Value=53;Dancers and choreographers
+Value=54;Film, stage and related directors and producers
+Value=55;Actors
+Value=56;Announcers on radio, television and other media
+Value=59;Creative and performing artists not elsewhere classified
+Value=11;Chemical and physical science technicians
+Value=12;Civil engineering technicians
+Value=13;Electrical engineering technicians
+Value=14;Electronics engineering technicians
+Value=15;Mechanical engineering technicians
+Value=16;Chemical engineering technicians
+Value=17;Mining and metallurgical technicians
+Value=18;Draftsmen
+Value=19;Physical and engineering science technicians not elsewhere classified
+Value=21;Mining supervisors
+Value=22;Manufacturing supervisors
+Value=23;Construction supervisors
+Value=31;Power production plant operators
+Value=32;Incinerator and water treatment plant operators
+Value=33;Chemical processing plant controllers
+Value=34;Petroleum and natural gas refining plant operators
+Value=35;Metal production process controllers
+Value=39;Process control technicians not elsewhere classified
+Value=41;Life science technicians
+Value=42;Agricultural technicians
+Value=43;Forestry technicians
+Value=51;Ship's engineer
+Value=52;Ship's deck officers and pilots
+Value=53;Aircraft pilots and related associate professionals
+Value=54;Air traffic controllers
+Value=55;Air traffic safety electronics technicians
+Value=11;Medical imaging and therapeutic equipment technicians
+Value=12;Medical and pathology laboratory technicians
+Value=13;Pharmaceutical technicians and assistants
+Value=14;Medical and dental prosthetic technicians
+Value=21;Nursing associate professionals
+Value=22;Midwifery associate professionals
+Value=30;Traditional and complementary medicine associate professionals
+Value=40;Veterinary technicians and assistants
+Value=51;Dental assistants and therapists
+Value=52;Medical records and health information technicians
+Value=53;Community health workers
+Value=54;Dispensing opticians
+Value=55;Physiotherapy technicians and assistants
+Value=56;Medical assistants
+Value=57;Environmental and occupational health inspectors and associates
+Value=58;Ambulance workers
+Value=59;Health associate professionals not elsewhere classified
+Value=11;Securities and finance dealers and brokers
+Value=12;Credit and loans officers
+Value=13;Accounting associate professionals
+Value=14;Statistical, mathematical and related associate professionals
+Value=15;Valuers and loss assessors
+Value=21;Insurance representatives
+Value=22;Commercial sales representatives
+Value=23;Buyers
+Value=24;Trade brokers
+Value=31;Clearing and forwarding agents
+Value=32;Conference and event planners
+Value=33;Employment agents and contractors
+Value=34;Real estate agents and property managers
+Value=39;Business services agents not elsewhere classified
+Value=41;Office supervisors
+Value=42;Legal secretaries
+Value=43;Administrative and executive secretaries
+Value=44;Medical secretaries
+Value=51;Customs and border inspectors
+Value=52;Government tax and excise officials
+Value=53;Government social benefits officials
+Value=54;Government licensing officials
+Value=55;Police inspectors and detectives
+Value=59;Government regulatory associate professionals not elsewhere classified
+Value=11;Legal and related associate professionals
+Value=12;Social work associate professionals
+Value=13;Religious associate professionals
+Value=21;Athletes and sports players
+Value=22;Sports coaches, instructors and officials
+Value=23;Fitness and recreation instructors and program leaders
+Value=31;Photographers
+Value=32;Interior designers and decorators
+Value=33;Gallery, museum and library technicians
+Value=34;Chefs
+Value=35;Artistic and cultural associate professional not elsewhere classified
+Value=11;Information and communications technology operations technicians
+Value=12;Information and communications technology user support technicians
+Value=13;Computer network and systems technicians
+Value=14;Web technicians
+Value=21;Broadcasting and audio-visual technicians
+Value=22;Telecommunications engineering technicians
+Value=10;General office clerks
+Value=20;Secretaries (general)
+Value=31;Typists and word processing operators
+Value=32;Data entry clerks
+Value=11;Bank tellers and related clerks
+Value=12;Bookmakers, croupiers/dealers and related gaming workers
+Value=13;Pawnbrokers and money lenders
+Value=14;Debt collectors and related workers
+Value=21;Travel consultants and clerks
+Value=22;Contact center information clerks
+Value=23;Telephone switchboard operators
+Value=24;Hotel receptionists
+Value=25;Enquiry clerks
+Value=26;Receptionists (general)
+Value=27;Survey and market research interviewers
+Value=29;Client information workers not elsewhere classified
+Value=11;Accounting and bookkeeping clerks
+Value=12;Statistical, finance and insurance clerks
+Value=13;Payroll clerks
+Value=21;Stock clerks
+Value=22;Production clerks
+Value=23;Transport clerks
+Value=11;Library clerks
+Value=12;Mail carriers and sorting clerks
+Value=13;Coding, proof-reading and related clerks
+Value=14;Scribes and related workers
+Value=15;Filing and copying clerks
+Value=16;Personnel clerk
+Value=19;Clerical support workers not elsewhere classified
+Value=11;Travel attendants and travel stewards
+Value=12;Transport conductors
+Value=13;Travel guides
+Value=20;Cooks
+Value=31;Waiters
+Value=32;Bartenders
+Value=41;Hairdressers
+Value=42;Beauticians and related workers
+Value=51;Cleaning and housekeeping supervisors in offices, hotels and other establishments
+Value=52;Household service providers
+Value=53;Building caretakers
+Value=61;Astrologers, fortune-tellers and related workers
+Value=62;Companions and valets
+Value=63;Undertakers and embalmers
+Value=64;Pet groomers and animal care workers
+Value=65;Driving instructors
+Value=69;Personal services workers not elsewhere classified
+Value=11;Stall and market salespersons
+Value=12;Street food salespersons
+Value=21;Shopkeepers
+Value=22;Shop supervisors
+Value=23;Shop sales assistants
+Value=30;Cashiers and ticket clerks
+Value=41;Fashion and other models
+Value=42;Sales demonstrators
+Value=43;Door to door salespersons
+Value=44;Contact center salespersons
+Value=45;Service station attendants
+Value=46;Food service counter attendants
+Value=49;Sales workers not elsewhere classified
+Value=11;Child care workers
+Value=12;Teachers' aides
+Value=21;Health care assistants
+Value=22;Home-based personal care workers
+Value=29;Personal care workers in health services not elsewhere classified
+Value=11;Firefighters
+Value=12;Police officers
+Value=13;Prison guards
+Value=14;Security guards
+Value=19;Protective services workers not elsewhere classified
+Value=11;Rice farmers
+Value=12;Corn farmers
+Value=13;Vegetable, legumes and root crops farmers
+Value=14;Sugarcane farmers
+Value=15;Coconut farmers
+Value=16;Other field crop farmers
+Value=17;Tree and shrub crop growers
+Value=18;Gardeners, horticultural and nursery growers
+Value=19;Other market gardeners and crop growers, not elsewhere classified
+Value=21;Livestock farmer
+Value=22;Dairy farmer
+Value=23;Eggs producers
+Value=24;Chicken farmer
+Value=25;Duck raisers
+Value=26;Poultry producers
+Value=27;Hog raising producers
+Value=28;Apiarists and sericulturists
+Value=29;Animal producers not elsewhere classified
+Value=30;Mixed crop and animal producers
+Value=11;Forest tree planters
+Value=12;Concessionaires and loggers
+Value=13;Charcoal makers and related workers
+Value=14;Minor forest product gatherers
+Value=21;Milkfish and tilapia producers
+Value=22;Seaweeds producers
+Value=23;Prawn producers
+Value=24;Oysters and mussels producers
+Value=25;Other aqua products producers
+Value=26;Inland and coastal waters fishery workers
+Value=27;Deep-sea fishery workers
+Value=28;Hunters and trappers
+Value=29;Fishermen not elsewhere classified
+Value=10;Subsistence crop farmers
+Value=20;Subsistence livestock farmers
+Value=30;Subsistence mixed crop and livestock farmers
+Value=40;Subsistence fishers, hunters, trappers and gatherers
+Value=11;House builders
+Value=12;Bricklayers and related workers
+Value=13;Stonemasons, stone cutters, splitters and carvers
+Value=14;Concrete placers, concrete finishers and related workers
+Value=15;Carpenters and joiners
+Value=19;Building frame and related trades workers not elsewhere classified
+Value=21;Roofers
+Value=22;Floor layers and tile setters
+Value=23;Plasterers
+Value=24;Insulation workers
+Value=25;Glaziers
+Value=26;Plumbers and pipe fitters
+Value=27;Air conditioning and refrigeration mechanics
+Value=31;Painters and related workers
+Value=32;Spray painters and varnishers
+Value=33;Building structure cleaners
+Value=11;Metal molders and coremakers
+Value=12;Welders and flame cutters
+Value=13;Sheet metal workers
+Value=14;Structural metal preparers and erectors
+Value=15;Riggers and cable splicers
+Value=21;Blacksmiths, hammersmiths, and forging press workers
+Value=22;Tool makers and related workers
+Value=23;Metal working machine tool setters and operators
+Value=24;Metal polishers, wheel grinders and tool sharpeners
+Value=31;Motor vehicle mechanics and repairers
+Value=32;Aircraft engine mechanics and repairers
+Value=33;Agricultural and industrial machinery mechanics and repairers
+Value=34;Bicycle and related repairers
+Value=11;Precision-instrument makers and repairers
+Value=12;Musical instrument makers and tuners
+Value=13;Jewellery and precious metal workers
+Value=14;Potters and related workers
+Value=15;Glass makers, cutters, grinders, and finishers
+Value=16;Sign writers, decorative painters, engravers and etchers
+Value=17;Handicraft workers in wood, basketry and related materials
+Value=18;Handicraft workers in textile, leather and related materials
+Value=19;Handicraft workers not elsewhere classified
+Value=21;Pre-press technicians
+Value=22;Printers
+Value=23;Print finishing and binding workers
+Value=11;Building and related electricians
+Value=12;Electrical mechanics and fitters
+Value=13;Electrical line installers and repairers
+Value=21;Electronics mechanics and servicers
+Value=22;Information and communications technology installers and servicers
+Value=11;Butchers, fishmongers, and related food preparers
+Value=12;Bakers, pastry cooks, and confectionery makers
+Value=13;Dairy products makers
+Value=14;Fruit, vegetable and related preservers
+Value=15;Food and beverage tasters and graders
+Value=16;Tobacco preparers and tobacco products makers
+Value=21;Wood treaters
+Value=22;Cabinet-makers and related workers
+Value=23;Woodworking machine tool setters and operators
+Value=31;Tailors, dressmakers, furriers and hatters
+Value=32;Garment and related patternmakers and cutters
+Value=33;Sewing, embroidery and related workers
+Value=34;Upholsterers and related workers
+Value=35;Pelt dressers, tanners and fellmongers
+Value=36;Shoemakers and related workers
+Value=41;Underwater divers
+Value=42;Shotfirers and blasters
+Value=43;Product graders and testers
+Value=44;Fumigators and other pest and weed controllers
+Value=49;Craft and related workers not elsewhere classified
+Value=11;Miners and quarriers
+Value=12;Mineral and stone processing plant operators
+Value=13;Well drillers and borers and related workers
+Value=14;Cement, stone and other mineral products machine operators
+Value=21;Metal processing plant operators
+Value=22;Metal finishing, plating and coating machine operators
+Value=31;Chemical products plant and machine operators
+Value=32;Photographic products machine operators
+Value=41;Rubber products machine operators
+Value=42;Plastic products machine operators
+Value=43;Paper products machine operators
+Value=51;Fiber preparing, spinning and winding machine operators
+Value=52;Weaving and knitting machine operators
+Value=53;Sewing machine operators
+Value=54;Bleaching, dyeing and fabric cleaning machine operators
+Value=55;Fur and leather preparing machine operators
+Value=56;Shoemaking and related machine operators
+Value=57;Laundry machine operators
+Value=59;Textile, fur and leather products machine operators not elsewhere classified
+Value=60;Food and related products machine operators
+Value=71;Pulp and papermaking plant operators
+Value=72;Wood processing plant operators
+Value=81;Glass and ceramics plant operators
+Value=82;Steam engine and boiler operators
+Value=83;Packing, bottling and labelling machine operators
+Value=89;Stationary plant and machine operators not elsewhere classified
+Value=11;Mechanical machinery assemblers
+Value=12;Electrical and electronic equipment assemblers
+Value=19;Assemblers not elsewhere classified
+Value=11;Locomotive engine drivers
+Value=12;Railway brake, signal, and switch operators
+Value=21;Motorcycle drivers
+Value=22;Car, taxi, and van drivers
+Value=31;Bus and tram drivers
+Value=32;Heavy truck and lorry drivers
+Value=41;Mobile farm and forestry plant operators
+Value=42;Earthmoving and related plant operators
+Value=43;Crane, hoist, and related plant operators
+Value=44;Lifting truck operators
+Value=50;Ship's deck crews and related workers
+Value=11;Domestic cleaners and helpers
+Value=12;Cleaners and helpers in offices, hotels and other establishments
+Value=21;Hand launderers and pressers
+Value=22;Vehicle cleaners
+Value=23;Window cleaners
+Value=29;Other cleaning workers
+Value=11;Crop farm laborers
+Value=12;Livestock farm laborers
+Value=13;Mixed crop and livestock farm laborers
+Value=14;Garden and horticultural laborers
+Value=15;Forestry laborers
+Value=16;Fishery and aquaculture laborers
+Value=11;Mining and quarrying laborers
+Value=12;Civil engineering laborers
+Value=13;Building construction laborers
+Value=21;Hand packers
+Value=29;Manufacturing laborers not elsewhere classified
+Value=31;Hand and pedal vehicle drivers
+Value=32;Drivers of animal-drawn vehicles and machinery
+Value=33;Freight handlers
+Value=34;Shelf fillers
+Value=11;Fast food preparers
+Value=12;Kitchen helpers
+Value=10;Street and related service workers
+Value=20;Street vendors
+Value=11;Garbage and recycling collectors
+Value=12;Refuse sorters
+Value=13;Sweepers and related laborers
+Value=21;Messengers, package deliverers and luggage porters
+Value=22;Odd job persons
+Value=23;Meter readers and vending-machine collectors
+Value=24;Water and firewoods collector
+Value=29;Elementary workers not elsewhere classified
+Value=10;Commissioned Armed Forces officers
+Value=10;Non-commissioned Armed Forces officers
+Value=10;Armed Forces occupations, other ranks
+
+[Item]
+Label=C41-Did work or had a job during the past quarter
+Name=PUFC41_WQTR
+Start=97
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=C41-Did work or had a job during the past quarter
+Name=PUFC41_WQTR_VS1
+Value=1;yes
+Value=2;no
+Value=' ';blank
+Name=NOTAPPL,Special
+
+[Item]
+Label=C43-Kind of Business (past quarter)
+Name=PUFC43_QKB
+Start=98
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=C43-Kind of Business (past quarter)
+Name=PUFC43_QKB_VS1
+Value=1:3;AGRICULTURE
+Value=1:2;   Agriculture and Forestry
+Value=3;   Fishing
+Value=5:43;INDUSTRY
+Value=5:9;   Mining and Quarying
+Value=10:33;   Manufacturing
+Value=35;   Electricity, Gas, Steam and Airconditioning Supply
+Value=36:39;   Water Supply; Sewerage, Waste Management and Remediation Activities
+Value=41:43;   Construction
+Value=45:99;SERVICES
+Value=45:47;   Whosale and Retail Trade; Repair of Motor Vehicles and Motorcycles
+Value=49:53;   Transportation and Storage
+Value=55:56;   Accommodation and Food Service Activities
+Value=58:63;   Information and Communication
+Value=64:66;   Financial and Insurance Activities
+Value=68;   Real Estate Activities
+Value=69:75;   Professional, Scientific  and Technical Activities
+Value=77:82;   Administrative and Support Service Activities
+Value=84;   Public Administration and Defense; Compulsory Social Security
+Value=85;   Education
+Value=86:88;   Human Health and Social Work Activities
+Value=90:93;   Arts, Entertainment and Recreation
+Value=94:96;   Other Service Activities
+Value=97:98;   Activities of Households as Employers
+Value=99;   Activities of Extraterritorial Organizations and Bodies
+
+[ValueSet]
+Label=C43-Kind of Business (past quarter)
+Name=PUFC43_QKB_VS2
+Note=PSIC 2010 CPH
+Value=1;Crop and Animal Production, Hunting and Related Services Activities
+Value=2;Forestry and Logging
+Value=3;Fishing and Aquaculture
+Value=5;Mining of Coal and Lignite
+Value=6;Extraction of Crude Petroleum and Natural Gas
+Value=7;Mining of Metal Ores
+Value=8;Other Mining and Quarrying
+Value=9;Mining Support Services
+Value=10;Manufacture of Food Products
+Value=11;Manufacture of Beverages
+Value=12;Manufacture of Tobacco Products
+Value=13;Manufacture of Textiles
+Value=14;Manufacture of Wearing Apparel
+Value=15;Manufacture of Leather and Related Products
+Value=16;Manufacture of Wood and of Products of Wood and Cork, Except Furniture; Manufacture of Articles of Bamboo, Cane, Rattan and the Like; Manufacture of Straw and Plaiting Materials
+Value=17;Manufacture of Paper and Paper Products
+Value=18;Printing and Reproduction of Recorded Media
+Value=19;Manufacture of Coke and Refined Petroleum Products
+Value=20;Manufacture of Chemicals and Chemical Products
+Value=21;Manufacture of Basic Pharmaceutical Products and Pharmaceutical Preparation
+Value=22;Manufacture of Rubber and Plastic Products
+Value=23;Manufacture of Other NonMetallic Mineral Products
+Value=24;Manufacture of Basic Metals
+Value=25;Manufacture of Fabricated Metal Products, Except Machinery and Equipment
+Value=26;Manufacture of Computer, Electronic and Optical Products
+Value=27;Manufacture of Electrical Equipment
+Value=28;Manufacture of Machinery and Equipment, not elsewhere classified
+Value=29;Manufacture of Motor Vehicles, Trailers and Semi-Trailers
+Value=30;Manufacture of Other Transport Equipment
+Value=31;Manufacture of Furniture
+Value=32;Other Manufacturing
+Value=33;Repair and Installation of Machinery and Equipment
+Value=35;Electricity, Gas, Steam and Air Conditioning Supply
+Value=36;Water Collection, Treatment and Supply
+Value=37;Sewerage
+Value=38;Waste Collection, Treatment and Disposal Activities; Materials Recovery
+Value=39;Remediation Activities and Other Waste Management Services
+Value=41;Construction of Buildings
+Value=42;Civil Engineering
+Value=43;Specialized Construction Activities
+Value=45;Wholesale and Retail Trade and Repair of Motor Vehicles and Motorcycles
+Value=46;Wholesale Trade, Except of Motor Vehicles and Motorcycles
+Value=47;Retail Trade, Except of Motor Vehicles and Motorcycles
+Value=49;Land Transport and Transport via Pipelines
+Value=50;Water Transport
+Value=51;Air Transport
+Value=52;Warehousing and Support Activities for Transportation
+Value=53;Postal and Courier Activities
+Value=55;Accommodation
+Value=56;Food and Beverage Service Activities
+Value=58;Publishing Activities
+Value=59;Motion Picture, Video and Television Programme Production, Sound Recording and Music Publishing Activities
+Value=60;Programming and Broadcasting Activities
+Value=61;Telecommunications
+Value=62;Computer Programming, Consultancy, and Related Activities
+Value=63;Information Service Activities
+Value=64;Financial Service Activities, Except Insurance and Pension Funding
+Value=65;Insurance, Reinsurance, and Pension Funding, Except Compulsory Social Security
+Value=66;Activities Auxiliary to Financial Service and Insurance Activities
+Value=68;Real Estate Activities
+Value=69;Legal and Accounting
+Value=70;Activities of Head Offices; Management Consultancy Activities
+Value=71;Architecture and Engineering Activities; Technical Testing and Analysis
+Value=72;Scientific and Research Development
+Value=73;Advertising and Market Research
+Value=74;Other Professional, Scientific, and Technical Activities
+Value=75;Veterinaty Activities
+Value=77;Rental and Leasing Activities
+Value=78;Employment Activities
+Value=79;Travel Agency, Tour Operator, Reservation Service and Related Activities
+Value=80;Security and Investigation Activities
+Value=81;Services to Buildings and Landscape Activities
+Value=82;Office Administrative, Office Support and Other Business Activities
+Value=84;Public Administration and Defense; Compulsory Social Security
+Value=85;Education
+Value=86;Human Health Activities
+Value=87;Residential Care Activities
+Value=88;Social Work Activities Without Accommodation
+Value=90;Creative Arts and Entertainment Activities
+Value=91;Libraries, Archives, Museums and Other Cultural Activities
+Value=92;Gambling and Betting Activities
+Value=93;Sports Activities and Amusement and Recreation Activities
+Value=94;Activities of Membership Organizations
+Value=95;Repair of Computers and Personal and Household Goods
+Value=96;Other Personal Service Activities
+Value=97;Activities of Households as Employers of Domestic Personnel
+Value=98;Undifferentiated Goods- and Services-Producing Activities of Private Households for Own Use
+Value=99;Activities of Extraterritorial Organizations and Bodies
+
+[Item]
+Label=New Employment Criteria (jul 05, 2005)
+Name=PUFNEWEMPSTAT
+Start=100
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=New Employment Criteria (jul 05, 2005)
+Name=PUFNEWEMPSTAT_VS1
+Value=1;Employed
+Value=2;Unemployed
+Value=3;Not in the labor force
