@@ -1,0 +1,1655 @@
+[Dictionary]
+Version=CSPro 4.1
+Label=Fies 2012
+Name=FIES12V1
+Note=Data File : FIES2012V1.PUF\r\n
+Note=\r\n
+Note=This file contains summarized data items from 2012 Family Income and Expenditure Survey. Total expenditures for each
+Note=item are summarized by major group.  Reported income are summarized by source.
+RecordTypeStart=0
+RecordTypeLen=0
+Positions=Relative
+ZeroFill=Yes
+DecimalChar=No
+
+[Level]
+Label=Questionnaire
+Name=QUEST
+
+[IdItems]
+
+[Item]
+Label=Region
+Name=W_REGN
+Start=1
+Len=2
+
+[ValueSet]
+Label=Region
+Name=W_REGN_VS1
+Value=13;Region XIII - NCR
+Value=14;Region XIV - CAR
+Value=1;Region I - Ilocos Region
+Value=2;Region II - Cagayan Valley
+Value=3;Region III - Central Luzon
+Value=41;Region IVa - Calabarzon
+Value=42;Region IVb - Mimaropa
+Value=5;Region V - Bicol Region
+Value=6;Region VI - Western Visayas
+Value=7;Region VII - Central Visayas
+Value=8;Region VIII - Eastern Visayas
+Value=9;Region IX - Western Mindanao
+Value=10;Region X - Northern Mindanao
+Value=11;Region XI - Southern Mindanao
+Value=12;Region XII - Central Mindanao
+Value=15;Region XV - ARMM
+Value=16;Region XVI - CARAGA
+
+[Item]
+Label=Other Unique ID
+Name=W_OID
+Start=3
+Len=10
+DataType=Alpha
+
+[ValueSet]
+Label=Other Unique ID
+Name=W_OID_VS1
+Value='39        ';Manila
+Value='74        ';NCR-2nd Dist.
+Value='75        ';NCR-3rd Dist.
+Value='76        ';NCR-4th Dist.
+Value='01        ';Abra
+Value='11        ';Benguet
+Value='27        ';Ifugao
+Value='32        ';Kalinga
+Value='44        ';Mountain Province
+Value='81        ';Apayao
+Value='28        ';Ilocos Norte
+Value='29        ';Ilocos Sur
+Value='33        ';La Union
+Value='55        ';Pangasinan
+Value='09        ';Batanes
+Value='15        ';Cagayan
+Value='31        ';Isabela
+Value='50        ';Nueva Vizcaya
+Value='57        ';Quirino
+Value='08        ';Bataan
+Value='14        ';Bulacan
+Value='49        ';Nueva Ecija
+Value='54        ';Pampanga
+Value='69        ';Tarlac
+Value='71        ';Zambales
+Value='77        ';Aurora
+Value='10        ';Batangas
+Value='21        ';Cavite
+Value='34        ';Laguna
+Value='56        ';Quezon
+Value='58        ';Rizal
+Value='40        ';Marinduque
+Value='51        ';Occidental Mindoro
+Value='52        ';Oriental Mindoro
+Value='53        ';Palawan
+Value='59        ';Romblon
+Value='05        ';Albay
+Value='16        ';Camarines Norte
+Value='17        ';Camarines Sur
+Value='20        ';Catanduanes
+Value='41        ';Masbate
+Value='62        ';Sorsogon
+Value='04        ';Aklan
+Value='06        ';Antique
+Value='19        ';Capiz
+Value='30        ';Iloilo
+Value='45        ';Negros Occidental
+Value='79        ';Guimaras
+Value='12        ';Bohol
+Value='22        ';Cebu
+Value='46        ';Negros Oriental
+Value='61        ';Siquijor
+Value='26        ';Eastern Samar
+Value='37        ';Leyte
+Value='48        ';Northern Samar
+Value='60        ';Samar (Western)
+Value='64        ';Southern Leyte
+Value='78        ';Biliran
+Value='72        ';Zamboanga del Norte
+Value='73        ';Zamboanga del Sur
+Value='83        ';Zamboanga Sibugay
+Value='97        ';Isabela City
+Value='13        ';Bukidnon
+Value='18        ';Camiguin
+Value='35        ';Lanao del Norte
+Value='42        ';Misamis Occidental
+Value='43        ';Misamis Oriental
+Value='23        ';Davao
+Value='24        ';Davao de Sur
+Value='25        ';Davao Oriental
+Value='82        ';Compostela Valley
+Value='47        ';Cotabato
+Value='63        ';South Cotabato
+Value='65        ';Sultan Kudarat
+Value='80        ';Sarangani
+Value='98        ';Cotabato City
+Value='07        ';Basilan
+Value='36        ';Lanao del Sur
+Value='38        ';Maguindanao
+Value='66        ';Sulu
+Value='70        ';Tawi-tawi
+Value='02        ';Agusan del Norte ((((((
+Value='03        ';Agusan del Sur
+Value='67        ';Surigao del Norte
+Value='68        ';Surigao del Sur
+
+[Item]
+Label=Sample Household Serial Number
+Name=W_SHSN
+Start=13
+Len=4
+DataType=Alpha
+
+[Item]
+Label=Household Control Number
+Name=W_HCN
+Start=17
+Len=4
+DataType=Alpha
+
+[Record]
+Label=HHLD-SUMMARY
+Name=HHLD_SUMMARY
+RecordTypeValue=''
+RecordLen=757
+
+[Item]
+Label=Urban/Rural
+Name=URB
+Start=21
+Len=1
+
+[ValueSet]
+Label=Urban/Rural
+Name=URB_VS1
+Value=1;Urban
+Value=2;Rural
+
+[Item]
+Label=Stratum (Recode)
+Name=RSTR
+Start=22
+Len=5
+DataType=Alpha
+
+[Item]
+Label=Psu (Recode)
+Name=PSU
+Start=27
+Len=6
+DataType=Alpha
+
+[Item]
+Label=Base Weight
+Name=BWEIGHT
+Start=33
+Len=9
+Decimal=3
+DecimalChar=Yes
+ZeroFill=Yes
+
+[Item]
+Label=Final Weight
+Name=RFACT
+Start=42
+Len=10
+Decimal=4
+DecimalChar=Yes
+ZeroFill=Yes
+
+[Item]
+Label=Family SIze
+Name=FSIZE
+Start=52
+Len=3
+Decimal=1
+ZeroFill=Yes
+
+[Item]
+Label=Salaries/Wages from Agricultural Activity
+Name=AGRI_SAL
+Start=55
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Salaries/Wages from Agricultural Activity
+Name=AGRI_SAL_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Salaries/Wages from Non-Agricultural Activity
+Name=NONAGRI_SAL
+Start=64
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Salaries/Wages from Non-Agricultural Activity
+Name=NONAGRI_SAL_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Salaries/Wages from both Agri and Non-Agri Activities
+Name=WAGES
+Start=73
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Salaries/Wages from both Agri and Non-Agri Activities
+Name=WAGES_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Net Share of Crops, Fruits, etc. (Tot. Net Value of Share)
+Name=NETSHARE
+Start=82
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Net Share of Crops, Fruits, etc. (Tot. Net Value of Share)
+Name=NETSHARE_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Cash Receipts, Support, etc. from Abroad
+Name=CASH_ABROAD
+Start=91
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Cash Receipts, Support, etc. from Abroad
+Name=CASH_ABROAD_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Cash Receipts, Support, etc. from Domestic Source
+Name=CASH_DOMESTIC
+Start=100
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Cash Receipts, Support, etc. from Domestic Source
+Name=CASH_DOMESTIC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Rentals Received from Non-Agri Lands, etc.
+Name=RENTALS_REC
+Start=109
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Rentals Received from Non-Agri Lands, etc.
+Name=RENTALS_REC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Interest
+Name=INTEREST
+Start=118
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Interest
+Name=INTEREST_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Pension and Retirement Benefits
+Name=PENSION
+Start=127
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Pension and Retirement Benefits
+Name=PENSION_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Dividends from Investment
+Name=DIVIDENDS
+Start=136
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Dividends from Investment
+Name=DIVIDENDS_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Other Sources of Income NEC
+Name=OTHER_SOURCE
+Start=145
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Other Sources of Income NEC
+Name=OTHER_SOURCE_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Family Sustenance Activities
+Name=NET_RECEIPT
+Start=154
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Family Sustenance Activities
+Name=NET_RECEIPT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Received as Gifts
+Name=REGFT
+Start=163
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Received as Gifts
+Name=REGFT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Crop Farming and Gardening
+Name=NET_CFG
+Start=172
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Crop Farming and Gardening
+Name=NET_CFG_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Livestock and Poultry Raising
+Name=NET_LPR
+Start=181
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Livestock and Poultry Raising
+Name=NET_LPR_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Fishing
+Name=NET_FISH
+Start=190
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Fishing
+Name=NET_FISH_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Forestry and Hunting
+Name=NET_FOR
+Start=199
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Forestry and Hunting
+Name=NET_FOR_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Wholesale and Retail
+Name=NET_RET
+Start=208
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Wholesale and Retail
+Name=NET_RET_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Manufacturing
+Name=NET_MFG
+Start=217
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Manufacturing
+Name=NET_MFG_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Community, Social, etc. Services
+Name=NET_COM
+Start=226
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Community, Social, etc. Services
+Name=NET_COM_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Transportation, Storage Services
+Name=NET_TRANS
+Start=235
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Transportation, Storage Services
+Name=NET_TRANS_VS1
+Value=1:999999999;total
+
+[Item]
+Label=MIning and Quarrying
+Name=NET_MIN
+Start=244
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=MIning and Quarrying
+Name=NET_MIN_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Construction
+Name=NET_CONS
+Start=253
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Construction
+Name=NET_CONS_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Entrep. Activities NEC
+Name=NET_NEC
+Start=262
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Entrep. Activities NEC
+Name=NET_NEC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Income from Entrepreneurial Acitivites
+Name=EAINC
+Start=271
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Income from Entrepreneurial Acitivites
+Name=EAINC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Income
+Name=TOINC
+Note=This is the sum of Wages, Other Income, and Income from Entrepreneurial Activity, Gifts Received, Imputed Rental Value
+Note=(non-benefit)
+Start=280
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Income
+Name=TOINC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Losses from EA
+Name=LOSSES
+Start=289
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Losses from EA
+Name=LOSSES_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Bread and Cereals
+Name=T_BREAD
+Start=298
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Bread and Cereals
+Name=T_BREAD_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Meat
+Name=T_MEAT
+Start=307
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Meat
+Name=T_MEAT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Fish and Seafood
+Name=T_FISH
+Start=316
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Fish and Seafood
+Name=T_FISH_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Milk, Cheese and Eggs
+Name=T_MILK
+Start=325
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Milk, Cheese and Eggs
+Name=T_MILK_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Oils and Fats
+Name=T_OIL
+Start=334
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Oils and Fats
+Name=T_OIL_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Fruit
+Name=T_FRUIT
+Start=343
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Fruit
+Name=T_FRUIT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Vegetables
+Name=T_VEG
+Start=352
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Vegetables
+Name=T_VEG_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Sugar, Jam, Honey, Chocolate and Confectionery
+Name=T_SUGAR
+Start=361
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Sugar, Jam, Honey, Chocolate and Confectionery
+Name=T_SUGAR_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Food Products Not Elsewhere Classified
+Name=T_FOOD_NEC
+Start=370
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Food Products Not Elsewhere Classified
+Name=T_FOOD_NEC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Coffee, Tea, and Cocoa
+Name=T_COFFEE
+Start=379
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Coffee, Tea, and Cocoa
+Name=T_COFFEE_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Mineral, Water, Soft Drinks, Fruit and Vegetables Juices
+Name=T_MINERAL
+Start=388
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Mineral, Water, Soft Drinks, Fruit and Vegetables Juices
+Name=T_MINERAL_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Alcoholic Beverages
+Name=T_ALCOHOL
+Start=397
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Alcoholic Beverages
+Name=T_ALCOHOL_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Tobacco
+Name=T_TOBACCO
+Start=406
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Tobacco
+Name=T_TOBACCO_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Other Vegetable-Base Products
+Name=T_OTHER_VEG
+Start=415
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Other Vegetable-Base Products
+Name=T_OTHER_VEG_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Food Consumed at Home
+Name=T_FOOD_HOME
+Start=424
+Len=11
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Food Consumed at Home
+Name=T_FOOD_HOME_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Food Consumed Outside The Home
+Name=T_FOOD_OUTSIDE
+Start=435
+Len=11
+ZeroFill=Yes
+
+[ValueSet]
+Label=Food Consumed Outside The Home
+Name=T_FOOD_OUTSIDE_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Food Expeditures
+Name=T_FOOD
+Start=446
+Len=11
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Food Expeditures
+Name=T_FOOD_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Clothing and Footwear
+Name=T_CLOTH
+Start=457
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Clothing and Footwear
+Name=T_CLOTH_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Furnishings, Household Equipment and Routine Household Maintenance
+Name=T_FURNISHING
+Start=466
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Furnishings, Household Equipment and Routine Household Maintenance
+Name=T_FURNISHING_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Health
+Name=T_HEALTH
+Start=475
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Health
+Name=T_HEALTH_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Housing, Water, Electricity, Gas and Other Fuels
+Name=T_HOUSING_WATER
+Start=484
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Housing, Water, Electricity, Gas and Other Fuels
+Name=T_HOUSING_WATER_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Actual House Rent
+Name=T_ACTRENT
+Start=493
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Actual House Rent
+Name=T_ACTRENT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=House Rent/Rental Value
+Name=T_RENTVAL
+Start=502
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=House Rent/Rental Value
+Name=T_RENTVAL_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Imputed House Rental Value
+Name=T_IMPUTED_RENT
+Start=511
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Imputed House Rental Value
+Name=T_IMPUTED_RENT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Imputed Housing Benefit Rental Value
+Name=T_BIMPUTED_RENT
+Start=520
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Imputed Housing Benefit Rental Value
+Name=T_BIMPUTED_RENT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Transport
+Name=T_TRANSPORT
+Start=529
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Transport
+Name=T_TRANSPORT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Communication
+Name=T_COMMUNICATION
+Start=538
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Communication
+Name=T_COMMUNICATION_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Recreation and Culture
+Name=T_RECREATION
+Start=547
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Recreation and Culture
+Name=T_RECREATION_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Education
+Name=T_EDUCATION
+Start=556
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Education
+Name=T_EDUCATION_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Miscellaneous Goods and Services
+Name=T_MISCELLANEOUS
+Start=565
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Miscellaneous Goods and Services
+Name=T_MISCELLANEOUS_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Other Expenditures
+Name=T_OTHER_EXPENDITURE
+Start=574
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Other Expenditures
+Name=T_OTHER_EXPENDITURE_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Other Disbursements
+Name=T_OTHER_DISBURSEMENT
+Start=583
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Other Disbursements
+Name=T_OTHER_DISBURSEMENT_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Non-Food Expenditure
+Name=T_NFOOD
+Start=592
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Non-Food Expenditure
+Name=T_NFOOD_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Expenditure
+Name=T_TOTEX
+Start=601
+Len=11
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Expenditure
+Name=T_TOTEX_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Disbursements
+Name=T_TOTDIS
+Start=612
+Len=11
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Disbursements
+Name=T_TOTDIS_VS1
+Value=1:99999999999;Total
+
+[Item]
+Label=Total Other Receipts
+Name=T_OTHREC
+Start=623
+Len=11
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Other Receipts
+Name=T_OTHREC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Total Receipts
+Name=T_TOREC
+Note=This is the sum of Total Family Income and Other Receipts
+Start=634
+Len=9
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Receipts
+Name=T_TOREC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Accomodation Services
+Name=FOOD_ACCOM_SRVC
+Start=643
+Len=11
+ZeroFill=Yes
+
+[ValueSet]
+Label=Accomodation Services
+Name=FOOD_ACCOM_SRVC_VS1
+Value=1:999999999;total
+
+[Item]
+Label=Household Head Sex  (2nd visit only)
+Name=SEX
+Start=654
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Sex  (2nd visit only)
+Name=SEX_VS1
+Value=1;Male
+Value=2;Female
+
+[Item]
+Label=Household Head Age  (2nd visit only)
+Name=AGE
+Start=655
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Age  (2nd visit only)
+Name=AGE_VS1
+Value=1:99;total
+
+[Item]
+Label=Household Head Marital Status  (2nd visit only)
+Name=MS
+Start=657
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Marital Status  (2nd visit only)
+Name=MS_VS1
+Value=1;Single
+Value=2;Married
+Value=3;Widowed
+Value=4;Divorced/Separated
+Value=5;Unknown
+
+[Item]
+Label=Household Head Highest Grade Completed  (2nd visit only)
+Name=HGC
+Start=658
+Len=3
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Highest Grade Completed  (2nd visit only)
+Name=HGC_VS1
+Value=0;No Grade Completed
+Value=10;Preschool
+Value=210:260;Elementary undergraduate
+Value=280;Elementary Graduate
+Value=310:330;High School Undergraduate
+Value=350;High School Graduate
+Value=410:420;Post Secondary
+Value=501:589;Post secondary /technical vocationalgraduate
+Value=810:840;College undergraduate
+Value=601:689;College graduate
+Value=900;Post baccalaureate
+
+[Item]
+Label=Household Head Job or Business Indicator  (2nd visit only)
+Name=JOB
+Start=661
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Job or Business Indicator  (2nd visit only)
+Name=JOB_VS1
+Value=1;With Job/Business
+Value=2;No Job/Business
+
+[Item]
+Label=Household Head Occupation  (2nd visit only)
+Name=OCCUP
+Start=662
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Occupation  (2nd visit only)
+Name=OCCUP_VS1
+Value=1110:1490;Officials of the Government and Special Interest Organizations, Corporate executives, managers , managing proprietors and Supervisors
+Value=2111:2460;Professionals
+Value=3111:3480;Technicians and  associate professionals
+Value=4111:4223;Clerks
+Value=5111:5230;Service workers and shop and market sales workers
+Value=6111:6590;Farmers, forestry workers and fishermen
+Value=7111:7442;Trades and related workers
+Value=8111:8340;Plant and machine operators and assemblers
+Value=9111:9333;Laborers and unskilled workers
+Value=111:113 121:129 930;Special occupations
+
+[Item]
+Label=Household Head Kind of Business/Industry  (2nd visit only)
+Name=KB
+Start=666
+Len=4
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Kind of Business/Industry  (2nd visit only)
+Name=KB_VS1
+Value=111:329;Agriculture, Forestry and Fishing
+Value=510:990;Mining and quarrying
+Value=1011:3320;Manufacturing
+Value=3510:3530;Electricity, Gas, Steam and Airconditioning supply
+Value=3600:3900;Water supply,sewerage, waste management and Remediation Activities
+Value=4100:4390;Construction
+Value=4510:4799;Wholesale and retail trade; Repair of motor vehicles and motorcycles
+Value=4911:5320;Transportation and Storage
+Value=5510:5630;Accomodation and Foos Service Activities
+Value=5811:6399;Information and communication
+Value=6411:6630;Financial and insurance activities
+Value=6811:6820;Real estate activities
+Value=6910:7500;Professional, Scientific and Technical activities
+Value=7710:8299;Adminstrative and Support Service activities
+Value=8411:8430;Public Administration and defense; compulsory social security
+Value=8511:8560;Education
+Value=8611:8890;Human health and social work services
+Value=9000:9329;Arts, entertainment and recreation
+Value=9411:9690;Other service activities
+Value=9700;Activities of households as employers of domestic personnel
+Value=9901:9909;Activities of extra-territorial organizations and bodies
+
+[Item]
+Label=Household Head Class of Worker  (2nd visit only)
+Name=CW
+Start=670
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Household Head Class of Worker  (2nd visit only)
+Name=CW_VS1
+Value=0;Worked for private household
+Value=1;Worked for private establishment
+Value=2;Worked for government/government corporation
+Value=3;Self-employed wihout any employee
+Value=4;Employer in own family-operated farm or business
+Value=5;Worked with pay in own family-operated farm or business
+Value=6;Worked without pay in own family-operated farm or business
+Value=0;Not Applicable
+
+[Item]
+Label=Type of Household   (2nd visit only)
+Name=HHTYPE
+Start=671
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of Household   (2nd visit only)
+Name=HHTYPE_VS1
+Value=1;Single Family
+Value=2;Extended Family
+Value=3;Two or More Nonrelated Persons/Members
+
+[Item]
+Label=Total Number of Family members   (2nd visit only)
+Name=MEMBERS
+Start=672
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total Number of Family members   (2nd visit only)
+Name=MEMBERS_VS1
+Value=1:99;total
+
+[Item]
+Label=Members with age less than 5 year old   (2nd visit only)
+Name=AGELESS5
+Start=674
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Members with age less than 5 year old   (2nd visit only)
+Name=AGELESS5_VS1
+Value=1:99;total
+
+[Item]
+Label=Members with age 5 - 17 years old   (2nd visit only)
+Name=AGE5_17
+Start=676
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Members with age 5 - 17 years old   (2nd visit only)
+Name=AGE5_17_VS1
+Value=1:99;total
+
+[Item]
+Label=Total number of family members employed for pay   (2nd visit only)
+Name=EMPLOYED_PAY
+Start=678
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total number of family members employed for pay   (2nd visit only)
+Name=EMPLOYED_PAY_VS1
+Value=1:99;total
+
+[Item]
+Label=Total number of family members employed for profit   (2nd visit only)
+Name=EMPLOYED_PROF
+Start=680
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Total number of family members employed for profit   (2nd visit only)
+Name=EMPLOYED_PROF_VS1
+Value=1:99;total
+
+[Item]
+Label=Spouse has job/business   (2nd visit only)
+Name=SPOUSE_EMP
+Start=682
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Spouse has job/business   (2nd visit only)
+Name=SPOUSE_EMP_VS1
+Value=1;Yes
+Value=2;No
+Value=3;Not Applicable
+
+[Item]
+Label=Type of Building/House (2nd visit only)
+Name=BLDG_TYPE
+Start=683
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of Building/House (2nd visit only)
+Name=BLDG_TYPE_VS1
+Value=1;Single
+Value=2;Duplex
+Value=3;Multi-unit residential
+Value=4;Commercial/Industrial/agricultural
+Value=5;Institutional living quarters
+Value=6;Other housing unit (boat, cve, others)
+
+[Item]
+Label=Type of Roof (2nd visit only)
+Name=ROOF
+Start=684
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of Roof (2nd visit only)
+Name=ROOF_VS1
+Value=1;Strong materials
+Value=2;Light materials
+Value=3;Salvage/makeshift materials
+Value=4;Mixed but predominantly strong materials
+Value=5;Mixed but predominantly light matrials
+Value=6;Mixed but predominantly salvaged materials
+Value=7;Not applicable
+
+[Item]
+Label=Type of Walls (2nd visit only)
+Name=WALLS
+Start=685
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Type of Walls (2nd visit only)
+Name=WALLS_VS1
+Value=1;Strong materials
+Value=2;Light materials
+Value=3;Salvage/makeshift materials
+Value=4;Mixed but predominantly strong materials
+Value=5;Mixed but predominantly light matrials
+Value=6;Mixed but predominantly salvaged materials
+Value=7;Not applicable
+
+[Item]
+Label=Tenure Status (2nd visit only)
+Name=TENURE
+Start=686
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Tenure Status (2nd visit only)
+Name=TENURE_VS1
+Value=1;Own or owner-like possession of house and lot
+Value=2;Rent house/room including lot
+Value=3;Own house, rent lot
+Value=4;Own house, rent free lot with consent of owner
+Value=5;Own house, rent-free lot without consent of owner
+Value=6;Rent-free house nad lot with consent of owner
+Value=7;Rent-free house and lot without consent of owner
+Value=8;Not applicable
+
+[Item]
+Label=House Alteration
+Name=HSE_ALTERTN
+Start=687
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=House Alteration
+Name=HSE_ALTERTN_VS1
+Value=1;Yes
+Value=2;No
+
+[Item]
+Label=Toilet Facilities (2nd visit only)
+Name=TOILET
+Start=688
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Toilet Facilities (2nd visit only)
+Name=TOILET_VS1
+Value=1;Water-sealed, sewer septic tank, used exclusively by family
+Value=2;Water-sealed, sewer tank, shared with other family
+Value=3;Water-sealed, other deposity, used exclusively by household
+Value=4;Water-sealed, othe depository, usef exclusively with other household
+Value=5;Close pit
+Value=6;Open pit
+Value=7;Others (pail system, and others)
+Value=0;None
+
+[Item]
+Label=Electricity Indicator (2nd visit only)
+Name=ELECTRIC
+Start=689
+Len=1
+ZeroFill=Yes
+
+[ValueSet]
+Label=Electricity Indicator (2nd visit only)
+Name=ELECTRIC_VS1
+Value=1;With Electricity
+Value=2;With out Electricity
+
+[Item]
+Label=Main Source of Water Supply (2nd visit only)
+Name=WATER
+Start=690
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Main Source of Water Supply (2nd visit only)
+Name=WATER_VS1
+Value=1;Own use, faucet, community water system
+Value=2;Shared, faucet, community water system
+Value=3;Own use, tubed/piped deep well
+Value=4;Shared, tubed/piped deep well
+Value=5;Tubed/piped shallow well
+Value=6;Dug well
+Value=7;Protected spring
+Value=8;Unprotected spring
+Value=9;Lake, river, rain, and others
+Value=10;Peddler
+Value=11;Bottled water
+Value=12;Others, specify
+
+[Item]
+Label=Distance of Water Source from the House (2nd visit only)
+Name=DISTANCE
+Start=692
+Len=5
+ZeroFill=Yes
+
+[ValueSet]
+Label=Distance of Water Source from the House (2nd visit only)
+Name=DISTANCE_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Radios (2nd visit only)
+Name=RADIO_QTY
+Start=697
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Radios (2nd visit only)
+Name=RADIO_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Television (2nd visit only)
+Name=TV_QTY
+Start=699
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Television (2nd visit only)
+Name=TV_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of CD/VCD/DVD (2nd visit only)
+Name=CD_QTY
+Start=701
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of CD/VCD/DVD (2nd visit only)
+Name=CD_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Component/Stereo set (2nd visit only)
+Name=STEREO_QTY
+Start=703
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Component/Stereo set (2nd visit only)
+Name=STEREO_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Refrigerator/Freezer (2nd visit only)
+Name=REF_QTY
+Start=705
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Refrigerator/Freezer (2nd visit only)
+Name=REF_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Washing Machine (2nd visit only)
+Name=WASH_QTY
+Start=707
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Washing Machine (2nd visit only)
+Name=WASH_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Airconditioner (2nd visit only)
+Name=AIRCON_QTY
+Start=709
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Airconditioner (2nd visit only)
+Name=AIRCON_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Car, Jeep, Van (2nd visit only)
+Name=CAR_QTY
+Start=711
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Car, Jeep, Van (2nd visit only)
+Name=CAR_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Landline/wireless telephones (2nd visit only)
+Name=LANDLINE_QTY
+Start=713
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Landline/wireless telephones (2nd visit only)
+Name=LANDLINE_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Cellular phone (2nd visit only)
+Name=CELLPHONE_QTY
+Start=715
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Cellular phone (2nd visit only)
+Name=CELLPHONE_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Personal Computer (2nd visit only)
+Name=PC_QTY
+Start=717
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Personal Computer (2nd visit only)
+Name=PC_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Stove with Oven/Gas Range (2nd visit only)
+Name=OVEN_QTY
+Start=719
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Stove with Oven/Gas Range (2nd visit only)
+Name=OVEN_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Motorized Bance (2nd visit only)
+Name=MOTOR_BANCA_QTY
+Start=721
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Motorized Bance (2nd visit only)
+Name=MOTOR_BANCA_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Number of Motorcycle/Tricycle (2nd visit only)
+Name=MOTORCYCLE_QTY
+Start=723
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Number of Motorcycle/Tricycle (2nd visit only)
+Name=MOTORCYCLE_QTY_VS1
+Value=1:99;total
+
+[Item]
+Label=Population Adjustmen
+Name=POP_ADJ
+Start=725
+Len=14
+Decimal=8
+DecimalChar=Yes
+ZeroFill=Yes
+
+[Item]
+Label=Per Capita Income
+Name=PCINC
+Start=739
+Len=11
+Decimal=2
+DecimalChar=Yes
+ZeroFill=Yes
+
+[Item]
+Label=National per capita income decile
+Name=NATPC
+Start=750
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=National per capita income decile
+Name=NATPC_VS1
+Value=1;First Decile
+Value=2;Second Decile
+Value=3;Third Decile
+Value=4;Fourth Decile
+Value=5;Fifth Decile
+Value=6;Sixth Decile
+Value=7;Seventh Decile
+Value=8;Eight Decile
+Value=9;Ninth Decile
+Value=10;Tenth Decile
+
+[Item]
+Label=National Income decile
+Name=NATDC
+Start=752
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=National Income decile
+Name=NATDC_VS1
+Value=1;First Decile
+Value=2;Second Decile
+Value=3;Third Decile
+Value=4;Fourth Decile
+Value=5;Fifth Decile
+Value=6;Sixth Decile
+Value=7;Seventh Decile
+Value=8;Eight Decile
+Value=9;Ninth Decile
+Value=10;Tenth Decile
+
+[Item]
+Label=Regional Income decile
+Name=REGDC
+Start=754
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Regional Income decile
+Name=REGDC_VS1
+Value=1;First Decile
+Value=2;Second Decile
+Value=3;Third Decile
+Value=4;Fourth Decile
+Value=5;Fifth Decile
+Value=6;Sixth Decile
+Value=7;Seventh Decile
+Value=8;Eight Decile
+Value=9;Ninth Decile
+Value=10;Tenth Decile
+
+[Item]
+Label=Regional per capita income decile
+Name=REGPC
+Start=756
+Len=2
+ZeroFill=Yes
+
+[ValueSet]
+Label=Regional per capita income decile
+Name=REGPC_VS1
+Value=1;First Decile
+Value=2;Second Decile
+Value=3;Third Decile
+Value=4;Fourth Decile
+Value=5;Fifth Decile
+Value=6;Sixth Decile
+Value=7;Seventh Decile
+Value=8;Eight Decile
+Value=9;Ninth Decile
+Value=10;Tenth Decile
