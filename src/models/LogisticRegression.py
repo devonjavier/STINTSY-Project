@@ -24,7 +24,7 @@ class LFSDataset(Dataset):
         }
 
 
-class MaskedLogisticRegression(torch.nn.Module):
+class LogisticRegression(torch.nn.Module):
     def __init__(self, input_dim):
         super().__init__()
         self.linear = torch.nn.Linear(input_dim, 1)

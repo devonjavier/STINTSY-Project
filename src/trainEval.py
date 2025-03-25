@@ -2,8 +2,15 @@ import torch
 from torch.utils.data import DataLoader
 from torch.optim.lr_scheduler import StepLR
 from sklearn.metrics import confusion_matrix, classification_report
-from src.models.LogisticRegression import MaskedLogisticRegression, LFSDataset
-
+from src.models.LogisticRegression import LogisticRegression, NeuralNetwork, LFSDataset
+def set_seeds(seed=45):
+    torch.manual_seed(seed)  
+    torch.cuda.manual_seed_all(seed)  
+    np.random.seed(seed)  
+    random.seed(seed)  
+    torch.backends.cudnn.deterministic = True 
+    torch.backends.cudnn.benchmark = False 
+    
 def prepare_data_loaders(data_dict, batch_size, missing_value):
     train_dataset = LFSDataset(data_dict['X_train'], data_dict['y_train'], missing_value)
     test_dataset = LFSDataset(data_dict['X_test'], data_dict['y_test'], missing_value)
@@ -13,9 +20,8 @@ def prepare_data_loaders(data_dict, batch_size, missing_value):
     return train_loader, test_loader
 
 def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_gamma, weight_decay, optimizer_name='sgd'):
-    model = MaskedLogisticRegression(input_dim)
+    model = LogisticRegression(input_dim)
     criterion = torch.nn.BCELoss()
-    
     
     if optimizer_name.lower() == 'sgd':
         optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
@@ -89,6 +95,7 @@ def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50,
                 convergence_threshold=1e-4, patience=3, weight_decay=0,
                 optimizer='sgd'):  
     
+    set_seeds()
     train_loader, test_loader = prepare_data_loaders(data_dict, batch_size, missing_value)
     input_dim = data_dict['X_train'].shape[1]
     
