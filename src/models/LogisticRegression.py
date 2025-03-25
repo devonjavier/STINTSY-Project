@@ -25,8 +25,9 @@ class LFSDataset(Dataset):
 
 
 class LogisticRegression(torch.nn.Module):
-    def __init__(self, input_dim):
+    def __init__(self, input_dim, seed=45):
         super().__init__()
+        torch.manual_seed(seed)
         self.linear = torch.nn.Linear(input_dim, 1)
         
     def forward(self, features, mask):
@@ -34,7 +35,8 @@ class LogisticRegression(torch.nn.Module):
         output = self.linear(masked_features)
         return torch.sigmoid(output)
 
-
+class NeuralNetwork(torch.nn.Module):
+    pass
 def analyze_model(result_dict):
     model = result_dict['model']
     feature_names = result_dict['feature_names']

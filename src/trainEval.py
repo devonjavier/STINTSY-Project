@@ -1,12 +1,19 @@
 import torch
 from torch.utils.data import DataLoader
 from torch.optim.lr_scheduler import StepLR
-from sklearn.metrics import confusion_matrix, classification_report
+
 from src.models.LogisticRegression import LogisticRegression, NeuralNetwork, LFSDataset
+
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.model_selection import ParameterSampler
+
 import random
 
-def set_seeds(seed=45):
+def set_seeds(seed):
     torch.manual_seed(seed)  
     torch.cuda.manual_seed_all(seed)  
     np.random.seed(seed)  
@@ -22,12 +29,12 @@ def prepare_data_loaders(data_dict, batch_size, missing_value):
     test_loader = DataLoader(test_dataset, batch_size=batch_size)
     return train_loader, test_loader
 
-def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_gamma, weight_decay, model, optimizer_name='sgd,'):
+def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_gamma, weight_decay, model, optimizer_name, seed):
 
     if model == 'lr':
-        model = LogisticRegression(input_dim)
+        model = LogisticRegression(input_dim, seed)
     elif model == 'nn':
-        model = NeuralNetwork(input_dim)
+        model = NeuralNetwork(input_dim, seed)
 
     criterion = torch.nn.BCELoss()
     
@@ -102,9 +109,10 @@ def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50,
                 scheduler_step_size=5, scheduler_gamma=0.5, missing_value=-1,
                 convergence_threshold=1e-4, patience=3, weight_decay=0,
                 optimizer='sgd',
-                model='lr'):  
+                model='lr',
+                seed = 45):  
     
-    set_seeds()
+    set_seeds(seed)
     train_loader, test_loader = prepare_data_loaders(data_dict, batch_size, missing_value)
     input_dim = data_dict['X_train'].shape[1]
     
@@ -116,7 +124,8 @@ def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50,
         scheduler_gamma, 
         weight_decay=weight_decay,
         optimizer_name=optimizer,
-        model=model
+        model=model,
+        seed=seed
     )
     
     history = {
@@ -164,4 +173,103 @@ def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50,
         'history': history,
         'feature_names': data_dict['feature_names'],
         'confusion_matrix': cm
+    }
+
+def hyperparameter_random_search(data_dict, n_iter_search=50):
+
+    param_distributions = {
+        'learning_rate': np.logspace(-4, -1, 20),  
+        'batch_size': [32, 64, 128, 256],
+        'optimizer': ['sgd', 'adam', 'rmsprop'],
+        'weight_decay': np.logspace(-5, -2, 10),
+        'model': ['lr', 'nn'],
+        'num_epochs': [30, 50, 75, 100],
+        'scheduler_step_size': [5, 10, 15],
+        'scheduler_gamma': [0.5, 0.7, 0.9],
+        'patience': [3, 5, 7]
+    }
+    
+    random_params = list(ParameterSampler(
+        param_distributions, 
+        n_iter=n_iter_search, 
+        random_state=42
+    ))
+    
+    results = []
+    
+    
+    for params in random_params:
+        print("\nTesting configuration:")
+        print(params)
+        
+        try:
+            result_dict = train_model(
+                data_dict, 
+                learning_rate=params['learning_rate'],
+                batch_size=params['batch_size'],
+                optimizer=params['optimizer'],
+                weight_decay=params['weight_decay'],
+                model=params['model'],
+                num_epochs=params['num_epochs'],
+                scheduler_step_size=params['scheduler_step_size'],
+                scheduler_gamma=params['scheduler_gamma'],
+                patience=params['patience']
+            )
+            
+            
+            final_test_accuracy = result_dict['history']['test_accuracy'][-1]
+            final_test_loss = result_dict['history']['test_loss'][-1]
+            
+            
+            results.append({
+                'params': params,
+                'test_accuracy': final_test_accuracy,
+                'test_loss': final_test_loss,
+                'full_result': result_dict
+            })
+            
+        except Exception as e:
+            print(f"Error in configuration: {e}")
+    
+    
+    results.sort(key=lambda x: x['test_accuracy'], reverse=True)
+    
+    
+    summary_df = pd.DataFrame([
+        {
+            'Learning Rate': r['params']['learning_rate'],
+            'Batch Size': r['params']['batch_size'],
+            'Optimizer': r['params']['optimizer'],
+            'Model': r['params']['model'],
+            'Test Accuracy': r['test_accuracy'],
+            'Test Loss': r['test_loss']
+        } for r in results
+    ])
+    
+    
+    plt.figure(figsize=(12, 6))
+    plt.scatter(summary_df['Learning Rate'], summary_df['Test Accuracy'], 
+                c=summary_df['Batch Size'], cmap='viridis', alpha=0.7)
+    plt.xscale('log')
+    plt.xlabel('Learning Rate (log scale)')
+    plt.ylabel('Test Accuracy')
+    plt.title('Hyperparameter Random Search Results')
+    plt.colorbar(label='Batch Size')
+    plt.tight_layout()
+    plt.show()
+    
+    
+    print("\nTop 5 Configurations:")
+    print(summary_df.head())
+    
+    
+    best_result = results[0]
+    print("\nBest Configuration:")
+    print(f"Best Accuracy: {best_result['test_accuracy']:.4f}")
+    print(f"Best Params: {best_result['params']}")
+    
+    return {
+        'best_params': best_result['params'],
+        'results': results,
+        'summary_df': summary_df
     }

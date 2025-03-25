@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-def prepare_data(lfs_data, target_col='PUFC11_WORK', feature_cols=None, test_size=0.2, missing_value=-1):
+def prepare_data(lfs_data, target_col='PUFC11_WORK', feature_cols=None, test_size=0.2, missing_value=-1, seed=45):
     print("Preparing data...")  
 
     filtered_data = lfs_data[lfs_data[target_col] != missing_value][feature_cols + [target_col]]
@@ -10,7 +10,7 @@ def prepare_data(lfs_data, target_col='PUFC11_WORK', feature_cols=None, test_siz
     X = filtered_data[feature_cols]
     y = filtered_data[target_col]
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=45)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=seed)
     print(f"Training on {len('X_train')} samples with {len('feature_cols')} features")
     print(f"Features: {feature_cols}")
     X_train_filled = X_train.replace(missing_value, 0)
