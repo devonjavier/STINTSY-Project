@@ -3,6 +3,9 @@ from torch.utils.data import DataLoader
 from torch.optim.lr_scheduler import StepLR
 from sklearn.metrics import confusion_matrix, classification_report
 from src.models.LogisticRegression import LogisticRegression, NeuralNetwork, LFSDataset
+import numpy as np
+import random
+
 def set_seeds(seed=45):
     torch.manual_seed(seed)  
     torch.cuda.manual_seed_all(seed)  
@@ -19,8 +22,13 @@ def prepare_data_loaders(data_dict, batch_size, missing_value):
     test_loader = DataLoader(test_dataset, batch_size=batch_size)
     return train_loader, test_loader
 
-def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_gamma, weight_decay, optimizer_name='sgd'):
-    model = LogisticRegression(input_dim)
+def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_gamma, weight_decay, model, optimizer_name='sgd,'):
+
+    if model == 'lr':
+        model = LogisticRegression(input_dim)
+    elif model == 'nn':
+        model = NeuralNetwork(input_dim)
+
     criterion = torch.nn.BCELoss()
     
     if optimizer_name.lower() == 'sgd':
@@ -93,7 +101,8 @@ def log_metrics(y_test, predictions):
 def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50, 
                 scheduler_step_size=5, scheduler_gamma=0.5, missing_value=-1,
                 convergence_threshold=1e-4, patience=3, weight_decay=0,
-                optimizer='sgd'):  
+                optimizer='sgd',
+                model='lr'):  
     
     set_seeds()
     train_loader, test_loader = prepare_data_loaders(data_dict, batch_size, missing_value)
@@ -106,7 +115,8 @@ def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50,
         scheduler_step_size, 
         scheduler_gamma, 
         weight_decay=weight_decay,
-        optimizer_name=optimizer
+        optimizer_name=optimizer,
+        model=model
     )
     
     history = {
