@@ -182,7 +182,7 @@ def hyperparameter_random_search(data_dict, n_iter_search=50):
         'batch_size': [32, 64, 128, 256],
         'optimizer': ['sgd', 'adam', 'rmsprop'],
         'weight_decay': np.logspace(-5, -2, 10),
-        'model': ['lr', 'nn'],
+        'model': ['lr'],
         'num_epochs': [30, 50, 75, 100],
         'scheduler_step_size': [5, 10, 15],
         'scheduler_gamma': [0.5, 0.7, 0.9],
