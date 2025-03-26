@@ -155,7 +155,7 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
     }
 
 def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=50):
-    random_params = list(ParameterSampler(param_distributions, n_iter=n_iter_search, random_state=42))
+    random_params = list(ParameterSampler(param_distributions, n_iter=n_iter_search, random_state=45))
     results = []
     for params in random_params:
         print("\nTesting configuration:")
