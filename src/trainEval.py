@@ -2,10 +2,11 @@ import torch
 from torch.utils.data import DataLoader
 from torch.optim.lr_scheduler import StepLR
 
-from src.models.LogisticRegression import LogisticRegression, NeuralNetwork, LFSDataset
+from src.models.LogisticRegression import LogisticRegression, LFSDataset
 
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import confusion_matrix, classification_report
@@ -29,13 +30,9 @@ def prepare_data_loaders(data_dict, batch_size, missing_value):
     test_loader = DataLoader(test_dataset, batch_size=batch_size)
     return train_loader, test_loader
 
-def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_gamma, weight_decay, model, optimizer_name, seed):
+def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_gamma, weight_decay, optimizer_name, seed):
 
-    if model == 'lr':
-        model = LogisticRegression(input_dim, seed)
-    elif model == 'nn':
-        model = NeuralNetwork(input_dim, seed)
-
+    model = LogisticRegression(input_dim, seed)
     criterion = torch.nn.BCELoss()
     
     if optimizer_name.lower() == 'sgd':
@@ -102,14 +99,13 @@ def log_metrics(y_test, predictions):
     print(cm)
     
     print("\nClassification Report:")
-    print(classification_report(y_test, predictions))
+    print(classification_report(y_test, predictions, digits = 8))
     return cm
 
 def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50, 
                 scheduler_step_size=5, scheduler_gamma=0.5, missing_value=-1,
                 convergence_threshold=1e-4, patience=3, weight_decay=0,
                 optimizer='sgd',
-                model='lr',
                 seed = 45):  
     
     set_seeds(seed)
@@ -124,7 +120,6 @@ def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50,
         scheduler_gamma, 
         weight_decay=weight_decay,
         optimizer_name=optimizer,
-        model=model,
         seed=seed
     )
     
@@ -175,19 +170,7 @@ def train_model(data_dict, learning_rate=0.01, batch_size=128, num_epochs=50,
         'confusion_matrix': cm
     }
 
-def hyperparameter_random_search(data_dict, n_iter_search=50):
-
-    param_distributions = {
-        'learning_rate': np.logspace(-4, -1, 20),  
-        'batch_size': [32, 64, 128, 256],
-        'optimizer': ['sgd', 'adam', 'rmsprop'],
-        'weight_decay': np.logspace(-5, -2, 10),
-        'model': ['lr'],
-        'num_epochs': [30, 50, 75, 100],
-        'scheduler_step_size': [5, 10, 15],
-        'scheduler_gamma': [0.5, 0.7, 0.9],
-        'patience': [3, 5, 7]
-    }
+def hyperparameter_random_search(param_distributions, data_dict, n_iter_search=50):
     
     random_params = list(ParameterSampler(
         param_distributions, 
@@ -209,7 +192,6 @@ def hyperparameter_random_search(data_dict, n_iter_search=50):
                 batch_size=params['batch_size'],
                 optimizer=params['optimizer'],
                 weight_decay=params['weight_decay'],
-                model=params['model'],
                 num_epochs=params['num_epochs'],
                 scheduler_step_size=params['scheduler_step_size'],
                 scheduler_gamma=params['scheduler_gamma'],
@@ -240,7 +222,6 @@ def hyperparameter_random_search(data_dict, n_iter_search=50):
             'Learning Rate': r['params']['learning_rate'],
             'Batch Size': r['params']['batch_size'],
             'Optimizer': r['params']['optimizer'],
-            'Model': r['params']['model'],
             'Test Accuracy': r['test_accuracy'],
             'Test Loss': r['test_loss']
         } for r in results

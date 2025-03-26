@@ -23,7 +23,6 @@ class LFSDataset(Dataset):
             'labels': self.labels[idx]
         }
 
-
 class LogisticRegression(torch.nn.Module):
     def __init__(self, input_dim, seed=45):
         super().__init__()
@@ -35,8 +34,6 @@ class LogisticRegression(torch.nn.Module):
         output = self.linear(masked_features)
         return torch.sigmoid(output)
 
-class NeuralNetwork(torch.nn.Module):
-    pass
 def analyze_model(result_dict):
     model = result_dict['model']
     feature_names = result_dict['feature_names']
@@ -74,9 +71,7 @@ def predict_employment_status(lfs_data, result_dict, target_normalization=None, 
         if len(original_values) == 2:
             value_map = {0: min(original_values), 1: max(original_values)}
             return pd.Series([value_map[int(p)] for p in binary_predictions], index=X.index)
-    
     return pd.Series(binary_predictions, index=X.index)
-
 
 
 def predict_employment_status(lfs_data, result_dict, target_normalization=None, missing_value=-1):
