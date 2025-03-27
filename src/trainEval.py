@@ -23,6 +23,7 @@ def set_seeds(seed):
     torch.backends.cudnn.benchmark = False
 
 def prepare_data_loaders(X_train, y_train, X_test, y_test, batch_size, missing_value):
+    
     train_dataset = LFSDataset(X_train, y_train, missing_value)
     test_dataset = LFSDataset(X_test, y_test, missing_value)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -41,7 +42,6 @@ def initialize_model(input_dim, learning_rate, scheduler_step_size, scheduler_ga
         optimizer = torch.optim.RMSprop(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
     else:
         raise ValueError(f"Unsupported optimizer: {optimizer_name}. Choose 'sgd', 'adam', or 'rmsprop'.")
-
 
     scheduler = StepLR(optimizer, step_size=scheduler_step_size, gamma=scheduler_gamma)
     return model, criterion, optimizer, scheduler
@@ -101,9 +101,15 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
     all_y_test_aggregate = []
     all_predictions_aggregate = []
 
+    
+    all_final_train_losses = []
+    all_final_test_losses = []
+    all_final_train_accuracies = []
+    all_final_test_accuracies = []
+
+    #iterate over folds
     for fold_idx, fold in enumerate(folds_data, 1):
         print(f"\n{'='*20} FOLD {fold_idx} {'='*20}")
-        
         train_loader, test_loader = prepare_data_loaders(fold['X_train'], fold['y_train'], fold['X_test'], fold['y_test'], batch_size, missing_value)
         input_dim = fold['X_train'].shape[1]
         model, criterion, optimizer, scheduler = initialize_model(
@@ -113,6 +119,8 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
         history = {'train_loss': [], 'test_loss': [], 'train_accuracy': [], 'test_accuracy': []}
         best_test_loss = float('inf')
         epochs_no_improve = 0
+
+        #converge criteria
         for epoch in range(num_epochs):
             train_loss, train_accuracy = train_one_epoch(model, train_loader, criterion, optimizer)
             test_loss, test_accuracy, all_y_test, all_predictions = evaluate_model(model, test_loader, criterion)
@@ -132,31 +140,57 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
                     print(f'Early stopping triggered after {epoch+1} epochs.')
                     break
         
+        #aggregate results
+        all_final_train_losses.append(history['train_loss'][-1])
+        all_final_test_losses.append(history['test_loss'][-1])
+        all_final_train_accuracies.append(history['train_accuracy'][-1])
+        all_final_test_accuracies.append(history['test_accuracy'][-1])
         
+        #aggregate confusion matrix
         all_y_test_aggregate.extend(all_y_test)
         all_predictions_aggregate.extend(all_predictions)
         
-        
+        #log metrics
         cm = log_metrics(all_y_test, all_predictions)
         fold_results.append({'history': history, 'confusion_matrix': cm})
-    
-    
+    # In train_model function, add to the fold results:
+    fold_results.append({
+    'history': history, 
+    'confusion_matrix': cm,
+    'model': model,  # Save the trained model
+    'feature_names': fold['feature_names']
+    })
     print(f"{'='*20} AGGREGATE RESULTS {'='*20}")
     aggregate_cm = log_metrics(all_y_test_aggregate, all_predictions_aggregate)
     
+    #aggregate final metrics
     avg_test_accuracy = np.mean([res['history']['test_accuracy'][-1] for res in fold_results])
     avg_test_loss = np.mean([res['history']['test_loss'][-1] for res in fold_results])
+    
+    
+    agg_final_train_loss = np.mean(all_final_train_losses)
+    agg_final_test_loss = np.mean(all_final_test_losses)
+    agg_final_train_accuracy = np.mean(all_final_train_accuracies)
+    agg_final_test_accuracy = np.mean(all_final_test_accuracies)
+
 
     return {
         'avg_test_accuracy': avg_test_accuracy, 
         'avg_test_loss': avg_test_loss, 
         'fold_results': fold_results,
-        'aggregate_confusion_matrix': aggregate_cm
+        'aggregate_confusion_matrix': aggregate_cm,
+        'aggregated_final_metrics': {
+            'avg_final_train_loss': agg_final_train_loss,
+            'avg_final_test_loss': agg_final_test_loss,
+            'avg_final_train_accuracy': agg_final_train_accuracy,
+            'avg_final_test_accuracy': agg_final_test_accuracy
+        }
     }
 
 def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=50):
     random_params = list(ParameterSampler(param_distributions, n_iter=n_iter_search, random_state=45))
     results = []
+    #iterate over random configurations
     for params in random_params:
         print("\nTesting configuration:")
         print(params)
@@ -175,11 +209,18 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
 
             avg_test_accuracy = fold_results['avg_test_accuracy']
             avg_test_loss = fold_results['avg_test_loss']
+            
+            
+            final_metrics = fold_results['aggregated_final_metrics']
 
             results.append({
                 'params': params,
                 'test_accuracy': avg_test_accuracy,
                 'test_loss': avg_test_loss,
+                'final_train_loss': final_metrics['avg_final_train_loss'],
+                'final_test_loss': final_metrics['avg_final_test_loss'],
+                'final_train_accuracy': final_metrics['avg_final_train_accuracy'],
+                'final_test_accuracy': final_metrics['avg_final_test_accuracy'],
                 'fold_results': fold_results['fold_results'],
                 'aggregate_confusion_matrix': fold_results['aggregate_confusion_matrix']
             })
@@ -188,14 +229,18 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
             print(f"Error in configuration: {e}")
 
     results.sort(key=lambda x: x['test_accuracy'], reverse=True)
-
+    #plot results
     summary_df = pd.DataFrame([
         {
             'Learning Rate': r['params']['learning_rate'],
             'Batch Size': r['params']['batch_size'],
             'Optimizer': r['params']['optimizer'],
             'Test Accuracy': r['test_accuracy'],
-            'Test Loss': r['test_loss']
+            'Test Loss': r['test_loss'],
+            'Final Train Loss': r['final_train_loss'],
+            'Final Test Loss': r['final_test_loss'],
+            'Final Train Accuracy': r['final_train_accuracy'],
+            'Final Test Accuracy': r['final_test_accuracy']
         } for r in results
     ])
 
