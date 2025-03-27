@@ -2,3 +2,5 @@
 .ipynb_checkpoints/STINTSY_MCO_LFS-checkpoint.ipynb
 .ipynb_checkpoints/STINTSY_MCO_LFS-checkpoint.ipynb
 /src/__pycache__
+/src/models/__pycache__
+/.ipynb_checkpoints
