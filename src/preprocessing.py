@@ -11,7 +11,7 @@ def prepare_data_kfold(lfs_data, target_col='PUFC11_WORK',
                         seed=45):
 
     print("Preparing data for k-fold cross-validation...")
-
+    # If no feature columns are provided, use all columns except the target column
     filtered_data = lfs_data[lfs_data[target_col] != missing_value][feature_cols + [target_col]]
 
     X = filtered_data[feature_cols]
@@ -19,7 +19,7 @@ def prepare_data_kfold(lfs_data, target_col='PUFC11_WORK',
 
     kf = KFold(n_splits=n_splits, shuffle=True, random_state=seed)
     folds_data = []
-
+    # Iterate over the KFold splits
     for train_index, test_index in kf.split(X):
         X_train, X_test = X.iloc[train_index], X.iloc[test_index]
         y_train, y_test = y.iloc[train_index], y.iloc[test_index]
@@ -30,12 +30,12 @@ def prepare_data_kfold(lfs_data, target_col='PUFC11_WORK',
 
         X_train_encoded = pd.get_dummies(X_train, columns=categorical_cols, dummy_na=True)
         X_test_encoded = pd.get_dummies(X_test, columns=categorical_cols, dummy_na=True)
-
+        # Make sure that the columns in the training and testing datasets are the same
         train_cols = X_train_encoded.columns
         test_cols = X_test_encoded.columns
         missing_cols_train = set(train_cols) - set(test_cols)
         missing_cols_test = set(test_cols) - set(train_cols)
-
+        # Add missing columns to the testing and training datasets
         for c in missing_cols_train:
             X_test_encoded[c] = 0
         for c in missing_cols_test:
@@ -43,7 +43,7 @@ def prepare_data_kfold(lfs_data, target_col='PUFC11_WORK',
 
         X_train_encoded = X_train_encoded[train_cols]
         X_test_encoded = X_test_encoded[train_cols]
-
+        # Scale numerical columns
         numerical_cols = [col for col in X_train_encoded.columns if col not in categorical_cols]
         scaler = None
         if numerical_cols:

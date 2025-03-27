@@ -53,45 +53,78 @@ def analyze_model(result_dict):
     print(coefficients)
 
 def predict_employment_status(lfs_data, result_dict, target_normalization=None, missing_value=-1):
-    model = result_dict['model']
-    feature_names = result_dict['feature_names']
+    """
+    Perform predictions using an aggregate approach across all folds
     
-    X = lfs_data[feature_names]
+    Parameters:
+    - lfs_data: Original dataset
+    - result_dict: Results from train_model() with multiple folds
+    - target_normalization: Optional normalization for target variable
+    - missing_value: Value representing missing data
     
-    mask = (X != missing_value).astype(np.float32)
-    X = X.replace(missing_value, 0).astype(np.float32)
-    
-    model.eval()
-    with torch.no_grad():
-        predictions = model(torch.tensor(X.values), torch.tensor(mask.values))
-        binary_predictions = (predictions >= 0.5).float().numpy().flatten()
-     
-    if target_normalization is not None and 'original_values' in target_normalization:
-        original_values = target_normalization['original_values']
-        if len(original_values) == 2:
-            value_map = {0: min(original_values), 1: max(original_values)}
-            return pd.Series([value_map[int(p)] for p in binary_predictions], index=X.index)
-    return pd.Series(binary_predictions, index=X.index)
+    Returns:
+    - Aggregated predictions for the entire dataset
+    """
+    from torch.utils.data import DataLoader
+    from src.models.LogisticRegression import LFSDataset
+    import torch
+    import numpy as np
+    import pandas as pd
 
-
-def predict_employment_status(lfs_data, result_dict, target_normalization=None, missing_value=-1):
-    model = result_dict['model']
-    feature_names = result_dict['feature_names']
+    # Extract feature names from the first fold (assuming consistent across folds)
+    feature_names = result_dict['fold_results'][0]['feature_names']
     
-    X = lfs_data[feature_names]
+    # Prepare the input data
+    X_predict = lfs_data[feature_names]
     
-    mask = (X != missing_value).astype(np.float32)
-    X = X.replace(missing_value, 0).astype(np.float32)
+    # Collect predictions from all folds
+    all_fold_predictions = []
     
-    model.eval()
-    with torch.no_grad():
-        predictions = model(torch.tensor(X.values), torch.tensor(mask.values))
-        binary_predictions = (predictions >= 0.5).float().numpy().flatten()
-     
-    if target_normalization is not None and 'original_values' in target_normalization:
-        original_values = target_normalization['original_values']
-        if len(original_values) == 2:
-            value_map = {0: min(original_values), 1: max(original_values)}
-            return pd.Series([value_map[int(p)] for p in binary_predictions], index=X.index)
+    for fold in result_dict['fold_results']:
+        # Retrieve the trained model for this fold
+        model = fold.get('model')  # You'll need to modify train_model to save the model
+        
+        if model is None:
+            print(f"Warning: No model found for a fold. Skipping.")
+            continue
+        
+        # Prepare prediction dataset
+        predict_dataset = LFSDataset(X_predict, 
+                                     torch.zeros(len(X_predict)), 
+                                     missing_value)
+        predict_loader = DataLoader(predict_dataset, batch_size=128)
+        
+        # Collect predictions for this fold
+        fold_predictions = []
+        model.eval()
+        with torch.no_grad():
+            for batch in predict_loader:
+                features = batch['features']
+                mask = batch['mask']
+                outputs = model(features, mask)
+                fold_predictions.extend(outputs.numpy())
+        
+        all_fold_predictions.append(fold_predictions)
     
-    return pd.Series(binary_predictions, index=X.index)
+    # Aggregate predictions (simple averaging)
+    aggregate_predictions = np.mean(all_fold_predictions, axis=0)
+    
+    # Convert to binary predictions
+    binary_predictions = (aggregate_predictions >= 0.5).astype(int)
+    
+    # Optional: Add predictions back to original dataframe
+    lfs_data['predicted_employment_status'] = binary_predictions
+    
+    # Detailed results
+    results = {
+        'raw_probabilities': aggregate_predictions,
+        'binary_predictions': binary_predictions,
+        'prediction_summary': {
+            'total_predictions': len(binary_predictions),
+            'positive_predictions': np.sum(binary_predictions),
+            'negative_predictions': len(binary_predictions) - np.sum(binary_predictions),
+            'positive_rate': np.mean(binary_predictions)
+        }
+    }
+    
+    return results
