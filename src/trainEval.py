@@ -53,13 +53,13 @@ def train_one_epoch(model, train_loader, criterion, optimizer):
         features = batch['features']
         mask = batch['mask']
         labels = batch['labels'].view(-1, 1)
-        outputs = model(features, mask)
+        outputs = model(features, mask) # Forward pass
         loss = criterion(outputs, labels)
-        optimizer.zero_grad()
-        loss.backward()
+        optimizer.zero_grad() # Zero gradients
+        loss.backward() # Backward pass
         optimizer.step()
         total_loss += loss.item()
-        predicted = (outputs >= 0.5).float()
+        predicted = (outputs >= 0.5).float() # Convert to binary predictions
         correct += (predicted == labels).sum().item()
         total += labels.size(0)
     return total_loss / len(train_loader), correct / total

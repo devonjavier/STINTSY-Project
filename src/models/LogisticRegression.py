@@ -6,10 +6,10 @@ from torch.utils.data import Dataset
 class LFSDataset(Dataset):
     def __init__(self, features, labels, missing_value=-1):
         self.features = features.values.astype(np.float32)
-        
+        # Convert labels to binary (1 for did work this past week, 0 for did not work)
         self.labels = (labels.values == 2).astype(np.float32)
         self.missing_value = missing_value
-        
+        # Create a mask to indicate missing values
         self.mask = (self.features != missing_value).astype(np.float32)
         self.features = np.where(self.features == missing_value, 0, self.features)
     
@@ -28,7 +28,7 @@ class LogisticRegression(torch.nn.Module):
         super().__init__()
         torch.manual_seed(seed)
         self.linear = torch.nn.Linear(input_dim, 1)
-        
+        # Initialize weights and bias
     def forward(self, features, mask):
         masked_features = features * mask
         output = self.linear(masked_features)
