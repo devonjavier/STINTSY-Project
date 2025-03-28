@@ -184,7 +184,8 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
             'avg_final_test_loss': agg_final_test_loss,
             'avg_final_train_accuracy': agg_final_train_accuracy,
             'avg_final_test_accuracy': agg_final_test_accuracy
-        }
+        },
+        'all_final_test_accuracies' : all_final_test_accuracies ## to be used for statistical tests
     }
 
 def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=50):
