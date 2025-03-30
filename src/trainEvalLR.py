@@ -130,7 +130,7 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
             history['train_accuracy'].append(train_accuracy)
             history['test_accuracy'].append(test_accuracy)
             print(f'Epoch {epoch+1}/{num_epochs}: Train Loss: {train_loss:.4f}, Test Loss: {test_loss:.4f}, '
-                  f'Train Acc: {train_accuracy:.4f}, Test Acc: {test_accuracy:.4f}, LR: {scheduler.get_last_lr()[0]:.6f}')
+                        f'Train Acc: {train_accuracy:.4f}, Test Acc: {test_accuracy:.4f}, LR: {scheduler.get_last_lr()[0]:.6f}')
             if test_loss < best_test_loss - convergence_threshold:
                 best_test_loss = test_loss
                 epochs_no_improve = 0
@@ -152,14 +152,8 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
         
         #log metrics
         cm = log_metrics(all_y_test, all_predictions)
-        fold_results.append({'history': history, 'confusion_matrix': cm})
-    # In train_model function, add to the fold results:
-    fold_results.append({
-    'history': history, 
-    'confusion_matrix': cm,
-    'model': model,  # Save the trained model
-    'feature_names': fold['feature_names']
-    })
+        fold_results.append({'history': history, 'confusion_matrix': cm}) #append only once per fold.
+    
     print(f"{'='*20} AGGREGATE RESULTS {'='*20}")
     aggregate_cm = log_metrics(all_y_test_aggregate, all_predictions_aggregate)
     
@@ -210,9 +204,10 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
 
             avg_test_accuracy = fold_results['avg_test_accuracy']
             avg_test_loss = fold_results['avg_test_loss']
-            
-            
+
             final_metrics = fold_results['aggregated_final_metrics']
+            #Extract test accuracies per fold.
+            fold_test_accuracies = [fold['history']['test_accuracy'][-1] for fold in fold_results['fold_results']]
 
             results.append({
                 'params': params,
@@ -223,7 +218,8 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
                 'final_train_accuracy': final_metrics['avg_final_train_accuracy'],
                 'final_test_accuracy': final_metrics['avg_final_test_accuracy'],
                 'fold_results': fold_results['fold_results'],
-                'aggregate_confusion_matrix': fold_results['aggregate_confusion_matrix']
+                'aggregate_confusion_matrix': fold_results['aggregate_confusion_matrix'],
+                'fold_test_accuracies': fold_test_accuracies #save fold accuracies.
             })
 
         except Exception as e:
@@ -267,5 +263,19 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
     return {
         'best_params': best_result['params'],
         'results': results,
-        'summary_df': summary_df
+        'summary_df': summary_df,
+        'fold_test_accuracies': best_result['fold_test_accuracies'] #add fold accuracies to return.
     }
+
+def print_metrics(results):
+    print("\nModel training complete!")
+    print("\nFinal Metrics:")
+    print(f"Average Test Accuracy: {results['avg_test_accuracy']:.4f}")
+    print(f"Average Test Loss: {results['avg_test_loss']:.4f}")
+    print("\nAggregated Final Metrics:")
+    print(f"Average Final Train Loss: {results['aggregated_final_metrics']['avg_final_train_loss']:.4f}")
+    print(f"Average Final Test Loss: {results['aggregated_final_metrics']['avg_final_test_loss']:.4f}")
+    print(f"Average Final Train Accuracy: {results['aggregated_final_metrics']['avg_final_train_accuracy']:.4f}")
+    print(f"Average Final Test Accuracy: {results['aggregated_final_metrics']['avg_final_test_accuracy']:.4f}")
+
+    return results
