@@ -169,6 +169,7 @@ def train_model(folds_data, learning_rate=0.01, batch_size=128, num_epochs=50,
 
 
     return {
+        'model': model,
         'avg_test_accuracy': avg_test_accuracy, 
         'avg_test_loss': avg_test_loss, 
         'fold_results': fold_results,
@@ -210,6 +211,7 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
             fold_test_accuracies = [fold['history']['test_accuracy'][-1] for fold in fold_results['fold_results']]
 
             results.append({
+                'model': fold_results['model'],
                 'params': params,
                 'test_accuracy': avg_test_accuracy,
                 'test_loss': avg_test_loss,
@@ -261,6 +263,7 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
     print(f"Best Params: {best_result['params']}")
 
     return {
+        'model': best_result['model'], #return the model of the best fold.
         'best_params': best_result['params'],
         'results': results,
         'summary_df': summary_df,

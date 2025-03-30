@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import torch
 from torch.utils.data import Dataset
 
@@ -128,3 +129,40 @@ def predict_employment_status(lfs_data, result_dict, target_normalization=None, 
     }
     
     return results
+
+def predict(model, features_df, feature_names, missing_value=-1):
+    """
+    Predict employment status using a single trained model.
+
+    Parameters:
+    - model: Trained LogisticRegression model
+    - features_df: DataFrame of features (Pandas DataFrame)
+    - feature_names: List of selected feature names
+    - missing_value: Value representing missing data
+
+    Returns:
+    - raw_probabilities: Probabilities output by the model
+    - binary_predictions: 0 or 1 predictions based on a threshold of 0.5
+    """
+    from torch.utils.data import DataLoader
+
+    # Prepare dataset
+    dataset = LFSDataset(features_df[feature_names], 
+                         labels=pd.Series([0] * len(features_df)),  # dummy labels
+                         missing_value=missing_value)
+    dataloader = DataLoader(dataset, batch_size=128)
+
+    # Collect predictions
+    model.eval()
+    all_outputs = []
+    with torch.no_grad():
+        for batch in dataloader:
+            features = batch['features']
+            mask = batch['mask']
+            outputs = model(features, mask)
+            all_outputs.extend(outputs.numpy())
+
+    raw_probabilities = np.array(all_outputs).flatten()
+    binary_predictions = (raw_probabilities >= 0.5).astype(int)+1
+
+    return raw_probabilities, binary_predictions

@@ -5,7 +5,9 @@ from sklearn.model_selection import ParameterSampler
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def trainkNN(folds_data, k=1):
+
+#optimized k value
+def trainkNN(folds_data, k=5):
     accuracies_train = []
     losses_train = []
     knn_accuracies_test = []

@@ -20,7 +20,15 @@ def train_eval_dt(folds_data):
             folds_data[i]['y_test'],
         )
 
-        model = DecisionTreeClassifier(random_state=45, min_impurity_decrease=0.001)
+        model = DecisionTreeClassifier(
+            random_state=45, 
+            min_samples_split = 10, 
+            min_samples_leaf = 1, 
+            min_impurity_decrease = 0.01, 
+            max_depth = 45, 
+            criterion = 'entropy', 
+            ccp_alpha = np.float64(0.12915496650148828)
+        )
 
         model.fit(X_train, y_train)
 

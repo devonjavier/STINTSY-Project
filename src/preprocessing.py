@@ -9,8 +9,8 @@ def prepare_data_kfold(lfs_data,
                         categorical_cols=None,
                         n_splits=5,
                         missing_value=-1,
-                        seed=45):
-    print("Preparing data for k-fold cross-validation...")
+                        seed=45,
+                        all_columns=None):
 
     if feature_cols is None:
         feature_cols = [col for col in lfs_data.columns if col != target_col]
@@ -29,18 +29,12 @@ def prepare_data_kfold(lfs_data,
         X_train, X_test = X.iloc[train_index], X.iloc[test_index]
         y_train, y_test = y.iloc[train_index], y.iloc[test_index]
 
-        print(f"Training on {len(X_train)} samples with {len(feature_cols)} features")
-        print(f"Testing on {len(X_test)} samples")
-        print(f"Features: {feature_cols}")
-
-        
         X_train_encoded = pd.get_dummies(X_train, columns=categorical_cols, dummy_na=True)
-
-        
-        all_columns = X_train_encoded.columns
-
-        
         X_test_encoded = pd.get_dummies(X_test, columns=categorical_cols, dummy_na=True)
+
+        all_columns = X_train_encoded.columns
+    
+        X_train_encoded = X_train_encoded.reindex(columns=all_columns, fill_value=0)
         X_test_encoded = X_test_encoded.reindex(columns=all_columns, fill_value=0)
 
         numerical_cols = [col for col in all_columns
