@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 #optimized k value
-def trainkNN(folds_data, k=5):
+def trainkNN(folds_data, k=9):
     accuracies_train = []
     losses_train = []
     knn_accuracies_test = []
@@ -149,6 +149,7 @@ def hyperparameter_random_search_knn(folds_data, p_grid, n_iter_search=20, rando
             fold_confusion_matrices.append(cm)
             
             print(f"Fold {i+1} - Train Accuracy: {accuracy_train:.4f}, Train Loss: {loss_train:.4f}, Test Accuracy: {accuracy_test:.4f}, Test Loss: {loss_test:.4f}")
+            print(f"Fold {i+1} - Confusion Matrix:\n{cm}\n")
 
         # Calculate averages
         avg_train_accuracy = np.mean(fold_accuracies_train)
@@ -211,8 +212,8 @@ def hyperparameter_random_search_knn(folds_data, p_grid, n_iter_search=20, rando
         } for r in results
     ])
 
-    print("\nTop 5 Configurations:")
-    print(summary_df.head())
+    print("\nTop 10 Configurations:")
+    print(summary_df.head(10))
 
     # Optional: Visualize results
     if 'n_neighbors' in p_grid:

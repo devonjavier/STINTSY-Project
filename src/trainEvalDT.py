@@ -13,6 +13,7 @@ def train_eval_dt(folds_data):
     all_test_labels = [] # Store true labels for all folds
 
     for i in range(5):
+        print(f"\n{'='*20} FOLD {fold_idx} {'='*20}")
         X_train, X_test, y_train, y_test = (
             folds_data[i]['X_train'],
             folds_data[i]['X_test'],
@@ -22,12 +23,12 @@ def train_eval_dt(folds_data):
 
         model = DecisionTreeClassifier(
             random_state=45, 
-            min_samples_split = 10, 
+            min_samples_split = 2, 
             min_samples_leaf = 1, 
             min_impurity_decrease = 0.01, 
-            max_depth = 45, 
-            criterion = 'entropy', 
-            ccp_alpha = np.float64(0.12915496650148828)
+            max_depth = 20, 
+            criterion = 'gini', 
+            ccp_alpha= 0.01
         )
 
         model.fit(X_train, y_train)
@@ -63,11 +64,13 @@ def train_eval_dt(folds_data):
     avg_accuracy_test = np.mean(dt_accuracies_test)
     avg_loss_test = np.mean(losses_test)
 
+
     print(f"\nAggregated Metrics:")
     print(f"Average Train Accuracy: {avg_accuracy_train:.4f}")
     print(f"Average Train Loss: {avg_loss_train:.4f}")
     print(f"Average Test Accuracy: {avg_accuracy_test:.4f}")
     print(f"Average Test Loss: {avg_loss_test:.4f}")
+
 
     print("\nOverall Confusion Matrix:")
     print(sum(confusion_matrices))
@@ -76,10 +79,6 @@ def train_eval_dt(folds_data):
     print(classification_report(y_test, y_test_pred))
     return avg_accuracy_train, avg_loss_train, avg_accuracy_test, avg_loss_test, all_test_predictions, all_test_labels, X_test, y_test, X_train, y_train
 
-import numpy as np
-from sklearn.metrics import accuracy_score, log_loss
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import ParameterSampler
 
 def hyperparameter_random_search_dt(folds_data, p_grid, n_iter_search=50, random_state=45):
     results = []
@@ -91,6 +90,7 @@ def hyperparameter_random_search_dt(folds_data, p_grid, n_iter_search=50, random
         fold_accuracies = []
         fold_losses = []
         fold_test_accuracies = [] # List to store test accuracies per fold
+        fold_conf_matrices = [] 
 
         # Evaluate parameters across all folds
         for i in range(len(folds_data)):
@@ -111,20 +111,30 @@ def hyperparameter_random_search_dt(folds_data, p_grid, n_iter_search=50, random
             fold_losses.append(log_loss(y_test, y_test_pred_proba))
             fold_test_accuracies.append(accuracy_score(y_test, y_test_pred)) # Save the test accuracy for this fold.
 
+
         # Calculate average performance across folds
         avg_accuracy = np.mean(fold_accuracies)
         avg_loss = np.mean(fold_losses)
+
+        cm = confusion_matrix(y_test, y_test_pred)
+        fold_conf_matrices.append(cm)
 
         results.append({
             'params': params,
             'avg_accuracy': avg_accuracy,
             'avg_loss': avg_loss,
-            'fold_test_accuracies': fold_test_accuracies # Add fold test accuracies to results
+            'fold_test_accuracies': fold_test_accuracies, # Add fold test accuracies to results
+            'fold_conf_matrices': fold_conf_matrices
         })
 
     # Select best parameters based on average accuracy
     results.sort(key=lambda x: x['avg_accuracy'], reverse=True)
     best_params = results[0]['params']
+
+    print("\nTop 5 Configurations & Confusion matrices:")
+    for i in range(min(5, len(results))):
+        print(f"Configuration {i+1}: {results[i]['params']}, Avg Accuracy: {results[i]['avg_accuracy']:.4f} Avg Log Loss: {results[i]['avg_loss']:.4f}")
+        print(f"Confusion Matrix:\n{results[i]['fold_conf_matrices']}\n")
 
     # Train final model with best parameters on all training data
     all_X_train = np.concatenate([folds_data[i]['X_train'] for i in range(len(folds_data))]) #corrected range.
@@ -133,8 +143,14 @@ def hyperparameter_random_search_dt(folds_data, p_grid, n_iter_search=50, random
     best_model = DecisionTreeClassifier(random_state=random_state, **best_params)
     best_model.fit(all_X_train, all_y_train)
 
+    aggregate_cm = np.sum(fold_conf_matrices, axis=0)
+    print("\nAggregate Matrix:")
+    print(aggregate_cm)
+
     print("\nBest Parameters:", best_params)
-    print("Best Average Accuracy:", results[0]['avg_accuracy'])
+    print("Best Params Accuracy:", results[0]['avg_accuracy'])
+    print("Best Params Log Loss:", results[0]['avg_loss'])
+    
 
     return {
         'best_model': best_model,

@@ -54,18 +54,7 @@ def analyze_model(result_dict):
     print(coefficients)
 
 def predict_employment_status(lfs_data, result_dict, target_normalization=None, missing_value=-1):
-    """
-    Perform predictions using an aggregate approach across all folds
-    
-    Parameters:
-    - lfs_data: Original dataset
-    - result_dict: Results from train_model() with multiple folds
-    - target_normalization: Optional normalization for target variable
-    - missing_value: Value representing missing data
-    
-    Returns:
-    - Aggregated predictions for the entire dataset
-    """
+
     from torch.utils.data import DataLoader
     from src.models.LogisticRegression import LFSDataset
     import torch
@@ -131,19 +120,7 @@ def predict_employment_status(lfs_data, result_dict, target_normalization=None, 
     return results
 
 def predict(model, features_df, feature_names, missing_value=-1):
-    """
-    Predict employment status using a single trained model.
 
-    Parameters:
-    - model: Trained LogisticRegression model
-    - features_df: DataFrame of features (Pandas DataFrame)
-    - feature_names: List of selected feature names
-    - missing_value: Value representing missing data
-
-    Returns:
-    - raw_probabilities: Probabilities output by the model
-    - binary_predictions: 0 or 1 predictions based on a threshold of 0.5
-    """
     from torch.utils.data import DataLoader
 
     # Prepare dataset

@@ -254,8 +254,8 @@ def hyperparameter_random_search(param_distributions, folds_data, n_iter_search=
     plt.tight_layout()
     plt.show()
 
-    print("\nTop 5 Configurations:")
-    print(summary_df.head())
+    print("\nTop 10 Configurations:")
+    print(summary_df.head(10))
 
     best_result = results[0]
     print("\nBest Configuration:")
