@@ -9,18 +9,17 @@ def prepare_data_kfold(lfs_data,
                         categorical_cols=None,
                         n_splits=5,
                         missing_value=-1,
-                        seed=45,
-                        all_columns=None):
+                        seed=45):
 
-    if feature_cols is None:
-        feature_cols = [col for col in lfs_data.columns if col != target_col]
-    if categorical_cols is None:
-        categorical_cols = []
-
+    #Filter out rows with missing PUFC11_WORK values
     filtered_data = lfs_data[lfs_data[target_col] != missing_value][feature_cols + [target_col]]
 
     X = filtered_data[feature_cols]
     y = filtered_data[target_col]
+
+
+    full_data_encoded = pd.get_dummies(X, columns=categorical_cols, dummy_na=True)
+    all_columns = full_data_encoded.columns
 
     kf = KFold(n_splits=n_splits, shuffle=True, random_state=seed)
     folds_data = []
@@ -29,17 +28,17 @@ def prepare_data_kfold(lfs_data,
         X_train, X_test = X.iloc[train_index], X.iloc[test_index]
         y_train, y_test = y.iloc[train_index], y.iloc[test_index]
 
+        # Create dummy variables separately for train and test
         X_train_encoded = pd.get_dummies(X_train, columns=categorical_cols, dummy_na=True)
         X_test_encoded = pd.get_dummies(X_test, columns=categorical_cols, dummy_na=True)
-
-        all_columns = X_train_encoded.columns
-    
+        
         X_train_encoded = X_train_encoded.reindex(columns=all_columns, fill_value=0)
         X_test_encoded = X_test_encoded.reindex(columns=all_columns, fill_value=0)
 
         numerical_cols = [col for col in all_columns
                           if col not in X_train_encoded.columns[X_train_encoded.dtypes == 'uint8']]
-
+         
+        
         if numerical_cols:
             scaler = StandardScaler()
             X_train_scaled = pd.DataFrame(
@@ -63,7 +62,7 @@ def prepare_data_kfold(lfs_data,
             'X_test': X_test_encoded,
             'y_train': y_train,
             'y_test': y_test,
-            'feature_names': X_train_encoded.columns,
+            'feature_names': all_columns,  
             'scaler': scaler
         })
 

@@ -2,6 +2,9 @@ from sklearn.metrics import accuracy_score, classification_report, log_loss, con
 from sklearn.tree import DecisionTreeClassifier
 import numpy as np
 from sklearn.model_selection import ParameterSampler
+import matplotlib.pyplot as plt
+import pandas as pd
+
 def train_eval_dt(folds_data):
     
     accuracies_train = []
@@ -9,6 +12,7 @@ def train_eval_dt(folds_data):
     dt_accuracies_test = []
     losses_test = []
     confusion_matrices = []
+
     all_test_predictions = [] # Store predictions for all folds
     all_test_labels = [] # Store true labels for all folds
 
@@ -147,10 +151,28 @@ def hyperparameter_random_search_dt(folds_data, p_grid, n_iter_search=50, random
     print("\nAggregate Matrix:")
     print(aggregate_cm)
 
+
+    y_all_pred = best_model.predict(all_X_train)
+    print("\nClassification Report for Best Model:")
+    print(classification_report(all_y_train, y_all_pred))
+
     print("\nBest Parameters:", best_params)
     print("Best Params Accuracy:", results[0]['avg_accuracy'])
     print("Best Params Log Loss:", results[0]['avg_loss'])
     
+
+
+    ## graph :)
+
+    accuracies = [res['avg_accuracy'] for res in results]
+    losses = [res['avg_loss'] for res in results]
+    labels = [str(res['params']) for res in results]
+
+    sorted_indices = sorted(range(len(accuracies)), key=lambda i: accuracies[i], reverse=True)
+    sorted_accuracies = [accuracies[i] for i in sorted_indices]
+    sorted_losses = [losses[i] for i in sorted_indices]
+    sorted_labels = [labels[i] for i in sorted_indices]
+
 
     return {
         'best_model': best_model,
